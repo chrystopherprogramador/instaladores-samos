@@ -73,11 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="Classes Gerenciais\clsGeForm.vb" />
+    <Compile Include="MDI.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="MDI.Designer.vb">
+      <DependentUpon>MDI.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -97,6 +98,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MDI.resx">
+      <DependentUpon>MDI.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -115,6 +119,33 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classe CRUD\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_system.ico.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_novo_samos2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\barcode_scanner_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\barcode_scanner_50dp_666666_FILL0_wght400_GRAD0_opsz48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bar_chart_50dp_666666_FILL0_wght400_GRAD0_opsz48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calculate_50dp_666666_FILL0_wght400_GRAD0_opsz48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sell_50dp_666666_FILL0_wght400_GRAD0_opsz48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
