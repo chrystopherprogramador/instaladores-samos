@@ -26,7 +26,7 @@
             _formulario.MinimizeBox = _minimizado
 
             If _centraliza Then
-                _formulario.StartPosition = FormStartPosition.CenterScreen
+                CentralizaNaTela(_formulario)
             End If
 
             _formulario.KeyPreview = True
@@ -67,7 +67,15 @@
         End Try
 
     End Sub
+    Public Sub CentralizaNaTela(formulario As Form)
+        Dim tela As Rectangle = Screen.PrimaryScreen.WorkingArea
 
+        Dim posX As Integer = (tela.Width - formulario.Width) \ 2
+        Dim posY As Integer = (tela.Height - formulario.Height) \ 2
+
+        formulario.StartPosition = FormStartPosition.Manual
+        formulario.Location = New Point(posX, posY)
+    End Sub
     Private Sub EstilizaTextBoxes(container As Control)
         For Each ctrl As Control In container.Controls
             If TypeOf ctrl Is TextBox Then

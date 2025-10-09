@@ -129,9 +129,20 @@ Partial Class MDI
         Me.disHora = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.PNSTATUS = New System.Windows.Forms.Panel()
+        Me.disX = New System.Windows.Forms.Label()
+        Me.disM = New System.Windows.Forms.Label()
+        Me.disS = New System.Windows.Forms.Label()
+        Me.disC = New System.Windows.Forms.Label()
+        Me.disG = New System.Windows.Forms.Label()
+        Me.disO = New System.Windows.Forms.Label()
+        Me.disL = New System.Windows.Forms.Label()
+        Me.disD = New System.Windows.Forms.Label()
+        Me.pnSuite = New System.Windows.Forms.FlowLayoutPanel()
         Me.Menu.SuspendLayout()
         Me.LateralEsquerdaLateralEsquerda.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PNSTATUS.SuspendLayout()
         Me.SuspendLayout()
         '
         'Menu
@@ -742,7 +753,7 @@ Partial Class MDI
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(126, 16)
+        Me.TextBox1.Location = New System.Drawing.Point(126, 17)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(47, 20)
         Me.TextBox1.TabIndex = 0
@@ -761,7 +772,7 @@ Partial Class MDI
         '
         Me.btnBuscarComandas.BackColor = System.Drawing.Color.Transparent
         Me.btnBuscarComandas.FlatAppearance.BorderSize = 0
-        Me.btnBuscarComandas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black
+        Me.btnBuscarComandas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.btnBuscarComandas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBuscarComandas.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBuscarComandas.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -778,7 +789,7 @@ Partial Class MDI
         '
         Me.btnItens.BackColor = System.Drawing.Color.Transparent
         Me.btnItens.FlatAppearance.BorderSize = 0
-        Me.btnItens.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black
+        Me.btnItens.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.btnItens.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnItens.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnItens.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -795,7 +806,7 @@ Partial Class MDI
         '
         Me.btnDashboard.BackColor = System.Drawing.Color.Transparent
         Me.btnDashboard.FlatAppearance.BorderSize = 0
-        Me.btnDashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black
+        Me.btnDashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDashboard.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDashboard.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -812,7 +823,7 @@ Partial Class MDI
         '
         Me.btnVendaRapida.BackColor = System.Drawing.Color.Transparent
         Me.btnVendaRapida.FlatAppearance.BorderSize = 0
-        Me.btnVendaRapida.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black
+        Me.btnVendaRapida.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.btnVendaRapida.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnVendaRapida.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnVendaRapida.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -856,11 +867,135 @@ Partial Class MDI
         Me.Panel2.Size = New System.Drawing.Size(1264, 5)
         Me.Panel2.TabIndex = 48
         '
+        'PNSTATUS
+        '
+        Me.PNSTATUS.BackColor = System.Drawing.Color.White
+        Me.PNSTATUS.Controls.Add(Me.disX)
+        Me.PNSTATUS.Controls.Add(Me.disM)
+        Me.PNSTATUS.Controls.Add(Me.disS)
+        Me.PNSTATUS.Controls.Add(Me.disC)
+        Me.PNSTATUS.Controls.Add(Me.disG)
+        Me.PNSTATUS.Controls.Add(Me.disO)
+        Me.PNSTATUS.Controls.Add(Me.disL)
+        Me.PNSTATUS.Controls.Add(Me.disD)
+        Me.PNSTATUS.Dock = System.Windows.Forms.DockStyle.Right
+        Me.PNSTATUS.Location = New System.Drawing.Point(1205, 141)
+        Me.PNSTATUS.Name = "PNSTATUS"
+        Me.PNSTATUS.Size = New System.Drawing.Size(59, 540)
+        Me.PNSTATUS.TabIndex = 50
+        '
+        'disX
+        '
+        Me.disX.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.disX.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.disX.ForeColor = System.Drawing.Color.White
+        Me.disX.Location = New System.Drawing.Point(0, 336)
+        Me.disX.Name = "disX"
+        Me.disX.Size = New System.Drawing.Size(59, 48)
+        Me.disX.TabIndex = 13
+        Me.disX.Text = "000"
+        Me.disX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'disM
+        '
+        Me.disM.BackColor = System.Drawing.Color.Black
+        Me.disM.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.disM.ForeColor = System.Drawing.Color.White
+        Me.disM.Location = New System.Drawing.Point(0, 288)
+        Me.disM.Name = "disM"
+        Me.disM.Size = New System.Drawing.Size(59, 48)
+        Me.disM.TabIndex = 12
+        Me.disM.Text = "000"
+        Me.disM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'disS
+        '
+        Me.disS.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.disS.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.disS.ForeColor = System.Drawing.Color.White
+        Me.disS.Location = New System.Drawing.Point(0, 240)
+        Me.disS.Name = "disS"
+        Me.disS.Size = New System.Drawing.Size(59, 48)
+        Me.disS.TabIndex = 11
+        Me.disS.Text = "000"
+        Me.disS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'disC
+        '
+        Me.disC.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.disC.ForeColor = System.Drawing.Color.Black
+        Me.disC.Location = New System.Drawing.Point(1, 192)
+        Me.disC.Name = "disC"
+        Me.disC.Size = New System.Drawing.Size(59, 48)
+        Me.disC.TabIndex = 10
+        Me.disC.Text = "000"
+        Me.disC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'disG
+        '
+        Me.disG.BackColor = System.Drawing.Color.Magenta
+        Me.disG.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.disG.ForeColor = System.Drawing.Color.White
+        Me.disG.Location = New System.Drawing.Point(1, 144)
+        Me.disG.Name = "disG"
+        Me.disG.Size = New System.Drawing.Size(59, 48)
+        Me.disG.TabIndex = 9
+        Me.disG.Text = "000"
+        Me.disG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'disO
+        '
+        Me.disO.BackColor = System.Drawing.Color.Red
+        Me.disO.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.disO.ForeColor = System.Drawing.Color.White
+        Me.disO.Location = New System.Drawing.Point(1, 96)
+        Me.disO.Name = "disO"
+        Me.disO.Size = New System.Drawing.Size(59, 48)
+        Me.disO.TabIndex = 8
+        Me.disO.Text = "000"
+        Me.disO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'disL
+        '
+        Me.disL.BackColor = System.Drawing.Color.Blue
+        Me.disL.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.disL.ForeColor = System.Drawing.Color.White
+        Me.disL.Location = New System.Drawing.Point(1, 48)
+        Me.disL.Name = "disL"
+        Me.disL.Size = New System.Drawing.Size(59, 48)
+        Me.disL.TabIndex = 7
+        Me.disL.Text = "000"
+        Me.disL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'disD
+        '
+        Me.disD.BackColor = System.Drawing.Color.Lime
+        Me.disD.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.disD.ForeColor = System.Drawing.Color.Black
+        Me.disD.Location = New System.Drawing.Point(1, 0)
+        Me.disD.Name = "disD"
+        Me.disD.Size = New System.Drawing.Size(59, 48)
+        Me.disD.TabIndex = 6
+        Me.disD.Text = "000"
+        Me.disD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'pnSuite
+        '
+        Me.pnSuite.AutoScroll = True
+        Me.pnSuite.BackColor = System.Drawing.Color.FromArgb(CType(CType(249, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.pnSuite.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnSuite.Location = New System.Drawing.Point(0, 141)
+        Me.pnSuite.Name = "pnSuite"
+        Me.pnSuite.Size = New System.Drawing.Size(1205, 540)
+        Me.pnSuite.TabIndex = 56
+        '
         'MDI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1264, 681)
+        Me.Controls.Add(Me.pnSuite)
+        Me.Controls.Add(Me.PNSTATUS)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.LateralEsquerdaLateralEsquerda)
         Me.Controls.Add(Me.Menu)
@@ -874,6 +1009,7 @@ Partial Class MDI
         Me.LateralEsquerdaLateralEsquerda.ResumeLayout(False)
         Me.LateralEsquerdaLateralEsquerda.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PNSTATUS.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -986,4 +1122,14 @@ Partial Class MDI
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Button1 As Button
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents PNSTATUS As Panel
+    Friend WithEvents disS As Label
+    Friend WithEvents disC As Label
+    Friend WithEvents disG As Label
+    Friend WithEvents disO As Label
+    Friend WithEvents disL As Label
+    Friend WithEvents disD As Label
+    Friend WithEvents disX As Label
+    Friend WithEvents disM As Label
+    Friend WithEvents pnSuite As FlowLayoutPanel
 End Class
