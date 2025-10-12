@@ -105,4 +105,43 @@ Public Class ConfBanco
             Return False
         End Try
     End Function
+
+    Private Sub btnCriar_Click(sender As Object, e As EventArgs) Handles btnCriar.Click
+        Try
+            If txtServidor.Text = String.Empty Then
+                MsgBox("Informe o IP do Servidor", vbExclamation)
+                txtServidor.Focus()
+                Exit Sub
+            End If
+            If txtBanco.Text = String.Empty Then
+                MsgBox("Informe o Nome do Banco", vbExclamation)
+                txtBanco.Focus()
+                Exit Sub
+            End If
+            If txtusuario.Text = String.Empty Then
+                MsgBox("Informe o Usuário do Banco", vbExclamation)
+                txtusuario.Focus()
+                Exit Sub
+            End If
+            If txtPorta.Text = String.Empty Then
+                MsgBox("Informe a Porta do Banco", vbExclamation)
+                txtPorta.Focus()
+                Exit Sub
+            End If
+            If txtSenha.Text = String.Empty Then
+                If MsgBox("A senha do banco está vazia, deseja continuar?", vbQuestion + vbYesNo) = vbNo Then
+                    txtSenha.Focus()
+                    Exit Sub
+                End If
+            End If
+            Dim clsGeSql As New clsGeScriptBanco(txtServidor.Text, txtBanco.Text, txtusuario.Text, txtSenha.Text, txtPorta.Text)
+            If clsGeSql.executaScript(True) Then
+                MsgBox("Banco criado com sucesso!", vbInformation)
+            Else
+                MsgBox("Falha ao criar o banco. Verifique os dados e tente novamente.", vbCritical)
+            End If
+        Catch ex As Exception
+            MsgBox("Erro ao testar a conexão: " & ex.Message, vbCritical)
+        End Try
+    End Sub
 End Class

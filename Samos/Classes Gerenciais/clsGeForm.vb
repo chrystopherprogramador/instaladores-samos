@@ -5,15 +5,28 @@
     Private _maximizado As Boolean = True
     Private _minimizado As Boolean = True
     Private _acaoSalvar As Action = Nothing
+    Private _f1Action As Action = Nothing
+    Private _f2Action As Action = Nothing
+    Private _f3Action As Action = Nothing
+    Private _f4Action As Action = Nothing
+    Private _f5Action As Action = Nothing
+    Private _acaoImprimir As Action = Nothing
 
     Public Sub New(Formulario As Form, Centraliza As Boolean, Optional Maximed As Boolean = True,
-                   Optional Minimized As Boolean = True, Optional AcaoSalvar As Action = Nothing)
+                   Optional Minimized As Boolean = True, Optional AcaoSalvar As Action = Nothing,
+                   Optional F1Acao As Action = Nothing, Optional F2Acao As Action = Nothing, Optional F3Acao As Action = Nothing,
+                   Optional F4Acao As Action = Nothing, Optional AcaoImprimir As Action = Nothing)
         ' Construtor padrão
         _centraliza = Centraliza
         _formulario = Formulario
         _maximizado = Maximed
         _minimizado = Minimized
         _acaoSalvar = AcaoSalvar
+        _f1Action = F1Acao
+        _f2Action = F2Acao
+        _f3Action = F3Acao
+        _f4Action = F4Acao
+        _acaoImprimir = AcaoImprimir
     End Sub
 
 
@@ -54,6 +67,21 @@
                                                 If e.Control AndAlso e.KeyCode = Keys.S Then
                                                     If _acaoSalvar IsNot Nothing Then _acaoSalvar.Invoke()
                                                 End If
+                                                If e.KeyCode = Keys.F1 Then
+                                                    If _f1Action IsNot Nothing Then _f1Action.Invoke()
+                                                End If
+                                                If e.KeyCode = Keys.F2 Then
+                                                    If _f2Action IsNot Nothing Then _f2Action.Invoke()
+                                                End If
+                                                If e.KeyCode = Keys.F3 Then
+                                                    If _f3Action IsNot Nothing Then _f3Action.Invoke()
+                                                End If
+                                                If e.KeyCode = Keys.F4 Then
+                                                    If _f4Action IsNot Nothing Then _f4Action.Invoke()
+                                                End If
+                                                If e.Control AndAlso e.KeyCode.P Then
+                                                    If _acaoImprimir IsNot Nothing Then _acaoImprimir.Invoke()
+                                                End If
                                             End Sub
 
             'Estiliza Button no Formulário
@@ -86,6 +114,7 @@
                     txt.ForeColor = Color.FromArgb(30, 30, 30)
                     txt.Font = New Font("Segoe UI", 9.75, FontStyle.Regular)
                     txt.Margin = New Padding(5)
+                    txt.CharacterCasing = CharacterCasing.Upper
                     txt.Height = 28
                 End If
             End If
@@ -107,8 +136,8 @@
                     btn.FlatStyle = FlatStyle.Flat
                     btn.Font = New Font("Segoe UI", 9.75, FontStyle.Regular)
                     btn.FlatAppearance.BorderSize = 0
-                    btn.Height = 35
-                    btn.Width = 120
+                    'btn.Height = 35
+                    'btn.Width = 120
                 End If
             End If
 

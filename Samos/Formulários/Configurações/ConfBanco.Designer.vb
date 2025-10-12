@@ -165,7 +165,7 @@ Partial Class ConfBanco
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label1)
         Me.Name = "ConfBanco"
-        Me.Text = "ConfBanco"
+        Me.Text = "Configuração Banco de dados"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

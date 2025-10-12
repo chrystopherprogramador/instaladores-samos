@@ -1,4 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports Samos.clsGeCarregaSuite
 
 Public Class MDI
 
@@ -6,14 +7,14 @@ Public Class MDI
 
     Private WithEvents atualizaTimer As New Timer()
 
-    Public painelLateral As New Panel()
-    Public lblInfoSuite As New Label()
-    Public btnFecharPainel As New Button()
+
 
     Dim clsSuite As clsGeCarregaSuite
     Private Sub MDI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'Dupla verificação de carregamento
+
+
 
         If clsGeVariaveis._systemLoaded = False Then
             Dim frmCarregando As New Carregando
@@ -24,6 +25,12 @@ Public Class MDI
             End If
         End If
 
+        If clsGeVariaveis.vUserLogado = False Then
+            Application.Exit()
+            Exit Sub
+        End If
+
+        ToolStripComboBox1.SelectedIndex = 0
 
         Dim config As New clsGeForm(Me, True, True, True)
         config.ConfiguraMe()
@@ -31,131 +38,31 @@ Public Class MDI
         clsSuite = New clsGeCarregaSuite(pnSuite, Me)
         clsSuite.CarregaSuite()
 
-        atualizaTimer.Interval = 3000 ' 3000 ms = 3 segundos
+        atualizaTimer.Interval = 3000
         atualizaTimer.Start()
 
-        ConstrutorPainel()
+        clsSuite.ConstrutorPainel()
 
-        For Each ctrl As Control In Me.Controls
-            If TypeOf ctrl Is Button OrElse
-            TypeOf ctrl Is Label OrElse
-            TypeOf ctrl Is Panel OrElse
-            TypeOf ctrl Is PictureBox OrElse
-            TypeOf ctrl Is FlowLayoutPanel Then
-
-                AddHandler ctrl.Click, AddressOf DetectaCliqueFora
-            End If
-        Next
-
-        ' Também adiciona ao próprio formulário
-        AddHandler Me.Click, AddressOf DetectaCliqueFora
+        AtualizaLabelsDeSituacao()
 
     End Sub
 
-    Private Sub ConstrutorPainel()
-        ' Painel lateral
-        painelLateral = New Panel() With {
-        .Name = "painelLateral",
-        .Width = 280,
-        .Height = Me.ClientSize.Height,
-        .BackColor = Color.FromArgb(230, 240, 240, 240),
-        .Location = New Point(Me.ClientSize.Width, 0),
-        .Visible = False,
-        .Padding = New Padding(12)
-    }
-        Me.Controls.Add(painelLateral)
-
-        ' Título da suíte
-        lblInfoSuite = New Label() With {
-        .Name = "lblInfoSuite",
-        .Text = "Suíte",
-        .Font = New Font("Segoe UI Semibold", 12),
-        .ForeColor = Color.DarkSlateGray,
-        .Dock = DockStyle.Top,
-        .Height = 40,
-        .TextAlign = ContentAlignment.MiddleLeft
-    }
-        painelLateral.Controls.Add(lblInfoSuite)
-
-        ' Botão fechar painel (adicionado antes para respeitar Dock = Bottom)
-        btnFecharPainel = New Button() With {
-        .Text = "Fechar Painel",
-        .Dock = DockStyle.Bottom,
-        .Height = 40,
-        .BackColor = Color.LightCoral,
-        .FlatStyle = FlatStyle.Flat
-    }
-        btnFecharPainel.FlatAppearance.BorderSize = 0
-        AddHandler btnFecharPainel.Click, Sub() FecharPainel()
-        painelLateral.Controls.Add(btnFecharPainel)
-
-        ' Painel de botões (entre o topo e o rodapé)
-        Dim painelBotoes As New FlowLayoutPanel() With {
-            .Dock = DockStyle.Fill,
-            .FlowDirection = FlowDirection.TopDown,
-            .WrapContents = False,
-            .AutoScroll = True,
-            .Padding = New Padding(0, 48, 0, 0) ' 👈 espaço abaixo do título
-        }
-        painelLateral.Controls.Add(painelBotoes)
-
-        ' Função auxiliar para criar botões
-        Dim criarBotao = Function(texto As String, tecla As String, ativo As Boolean) As Button
-                             Dim btn As New Button() With {
-                             .Text = $"{texto} {tecla}",
-                             .Font = New Font("Segoe UI", 10, FontStyle.Bold),
-                             .Width = 230,
-                             .Height = 40,
-                             .Enabled = ativo,
-                             .BackColor = If(ativo, Color.LightSteelBlue, Color.Gainsboro),
-                             .FlatStyle = FlatStyle.Flat
-                         }
-                             btn.FlatAppearance.BorderSize = 0
-                             Return btn
-                         End Function
-
-        ' Adiciona os botões
-        painelBotoes.Controls.Add(criarBotao("Ocupar", "F1", True))
-        painelBotoes.Controls.Add(criarBotao("Fechar", "F2", True))
-        painelBotoes.Controls.Add(criarBotao("Consumos", "F3", True))
-        painelBotoes.Controls.Add(criarBotao("Recebimento", "F6", True))
-        painelBotoes.Controls.Add(criarBotao("Início Limpeza", "F4", True))
-        painelBotoes.Controls.Add(criarBotao("Chaves", "F5", True))
-        painelBotoes.Controls.Add(criarBotao("Manutenção", "F7", True))
 
 
-    End Sub
-    Public Sub AbrirPainel()
-        painelLateral.Visible = True
-        painelLateral.BringToFront() ' 👈 isso garante que ele fique acima de todos
-
-        Dim destinoX = Me.ClientSize.Width - painelLateral.Width
-        Dim t As New Timer() With {.Interval = 5}
-        AddHandler t.Tick, Sub()
-                               If painelLateral.Left > destinoX Then
-                                   painelLateral.Left -= 40
-                               Else
-                                   painelLateral.Left = destinoX
-                                   t.Stop()
-                               End If
-                           End Sub
-        t.Start()
-    End Sub
-    Public Sub FecharPainel()
-        Dim t As New Timer() With {.Interval = 10}
-        AddHandler t.Tick, Sub()
-                               If painelLateral.Left < Me.Width Then
-                                   painelLateral.Left += 20
-                               Else
-                                   painelLateral.Visible = False
-                                   t.Stop()
-                               End If
-                           End Sub
-        t.Start()
-    End Sub
     Private Sub atualizaTimer_Tick(sender As Object, e As EventArgs) Handles atualizaTimer.Tick
+        Dim modoSelecionado As ModoLayoutSuite
+
+        Select Case ToolStripComboBox1.SelectedIndex
+            Case 0
+                modoSelecionado = ModoLayoutSuite.Kanban
+            Case 1
+                modoSelecionado = ModoLayoutSuite.GradeSimples
+            Case Else
+                modoSelecionado = ModoLayoutSuite.Kanban
+        End Select
+
         Task.Run(Sub()
-                     clsSuite.AtualizaSuite()
+                     clsSuite.AtualizaSuite(modoSelecionado)
                      Me.Invoke(Sub()
                                    AtualizaLabelsDeSituacao()
                                End Sub)
@@ -208,7 +115,10 @@ Public Class MDI
 
     Private Sub MDI_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         If clsGeVariaveis._systemLoaded Then
-
+            If clsGeVariaveis.vUserLogado = False Then
+                Dim myForm As New Acesso
+                myForm.ShowDialog()
+            End If
         End If
     End Sub
 
@@ -220,39 +130,62 @@ Public Class MDI
             Dim cmd As New MySqlCommand("SELECT * FROM cores WHERE Codigo = 1", conn)
             Using reader = cmd.ExecuteReader()
                 If reader.Read() Then
-                    coresDict("D") = Tuple.Create(VB6Color(reader("CorD")), VB6Color(reader("CorFD")))
-                    coresDict("O") = Tuple.Create(VB6Color(reader("CorO")), VB6Color(reader("CorFO")))
-                    coresDict("L") = Tuple.Create(VB6Color(reader("CorL")), VB6Color(reader("CorFL")))
-                    coresDict("S") = Tuple.Create(VB6Color(reader("CorS")), VB6Color(reader("CorFS")))
-                    coresDict("C") = Tuple.Create(VB6Color(reader("CorC")), VB6Color(reader("CorFC")))
-                    coresDict("G") = Tuple.Create(VB6Color(reader("CorG")), VB6Color(reader("CorFG")))
-                    coresDict("M") = Tuple.Create(VB6Color(reader("CorM")), VB6Color(reader("CorFM")))
-                    coresDict("X") = Tuple.Create(VB6Color(reader("CorM")), VB6Color(reader("CorFM"))) ' Reservado usa mesma cor de Ocupada
+                    coresDict("D") = Tuple.Create(clsGeGeneral.VB6Color(reader("CorD")), clsGeGeneral.VB6Color(reader("CorFD")))
+                    coresDict("O") = Tuple.Create(clsGeGeneral.VB6Color(reader("CorO")), clsGeGeneral.VB6Color(reader("CorFO")))
+                    coresDict("L") = Tuple.Create(clsGeGeneral.VB6Color(reader("CorL")), clsGeGeneral.VB6Color(reader("CorFL")))
+                    coresDict("S") = Tuple.Create(clsGeGeneral.VB6Color(reader("CorS")), clsGeGeneral.VB6Color(reader("CorFS")))
+                    coresDict("C") = Tuple.Create(clsGeGeneral.VB6Color(reader("CorC")), clsGeGeneral.VB6Color(reader("CorFC")))
+                    coresDict("G") = Tuple.Create(clsGeGeneral.VB6Color(reader("CorG")), clsGeGeneral.VB6Color(reader("CorFG")))
+                    coresDict("M") = Tuple.Create(clsGeGeneral.VB6Color(reader("CorM")), clsGeGeneral.VB6Color(reader("CorFM")))
+                    coresDict("X") = Tuple.Create(clsGeGeneral.VB6Color(reader("CorM")), clsGeGeneral.VB6Color(reader("CorFM"))) ' Reservado usa mesma cor de Ocupada
                 End If
             End Using
         End Using
 
         Return coresDict
     End Function
-    Private Function VB6Color(vb6ColorValue As Object) As Color
-        If vb6ColorValue Is DBNull.Value Then Return Color.Gray
-
-        Dim valor As Integer
-        If Integer.TryParse(vb6ColorValue.ToString(), valor) Then
-            Dim r = valor And &HFF
-            Dim g = (valor >> 8) And &HFF
-            Dim b = (valor >> 16) And &HFF
-            Return Color.FromArgb(r, g, b)
-        End If
-
-        Return Color.Gray
-    End Function
 
 
-    Private Sub DetectaCliqueFora(sender As Object, e As EventArgs)
-        Dim mousePos = Me.PointToClient(MousePosition)
-        If painelLateral.Visible AndAlso Not painelLateral.Bounds.Contains(mousePos) Then
-            FecharPainel()
-        End If
+
+    Private Sub ToolStripComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ToolStripComboBox1.SelectedIndexChanged
+        Dim modoSelecionado As ModoLayoutSuite
+
+        Select Case ToolStripComboBox1.SelectedIndex
+            Case 0
+                modoSelecionado = ModoLayoutSuite.Kanban
+            Case 1
+                modoSelecionado = ModoLayoutSuite.GradeSimples
+            Case Else
+                Exit Sub
+        End Select
+
+        clsSuite = New clsGeCarregaSuite(pnSuite, Me)
+        clsSuite.CarregaSuite(modoSelecionado)
+        clsSuite.AtualizaSuite(modoSelecionado)
+    End Sub
+
+    Private Sub InformaTarifaçãoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InformaTarifaçãoToolStripMenuItem.Click
+        Dim myForm As New InformaTarifacao
+        myForm.ShowDialog()
+    End Sub
+
+    Private Sub ÁreaDeServiçosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ÁreaDeServiçosToolStripMenuItem.Click
+        Dim myForm As New AreaSelecao
+        myForm.ShowDialog()
+    End Sub
+
+    Private Sub TrocaDeUsuáriosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles TrocaDeUsuáriosToolStripMenuItem1.Click
+        Dim myForm As New Acesso
+        myForm.ShowDialog()
+    End Sub
+
+    Private Sub CategoriasDeMercadoriasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CategoriasDeMercadoriasToolStripMenuItem.Click
+        Dim myForm As New EspecieSelecao
+        myForm.ShowDialog()
+    End Sub
+
+    Private Sub ProdToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProdToolStripMenuItem.Click
+        Dim myForm As New ProdutosSelecao
+        myForm.ShowDialog()
     End Sub
 End Class

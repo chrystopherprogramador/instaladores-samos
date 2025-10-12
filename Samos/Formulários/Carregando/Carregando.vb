@@ -46,12 +46,26 @@ Public Class Carregando
             clsGeVariaveis._strPathBanco = $"Server={clsGeVariaveis._ipServidor};Port={clsGeVariaveis._portaBanco};Database={clsGeVariaveis._nomeBanco};Uid={clsGeVariaveis._usuarioBanco};Pwd={clsGeVariaveis._senhaBanco};"
 
             ' Etapa 4: Teste de conexão
-            carregaSistema.ReportProgress(80)
+            carregaSistema.ReportProgress(70)
             If Not TestaConexao(clsGeVariaveis._strPathBanco) Then
                 Dim myForm As New ConfBanco
                 myForm.ShowDialog()
                 Me.Close()
             End If
+
+
+            'Carrega configurações gerais
+
+            Using conn As New MySqlConnection(clsGeVariaveis._strPathBanco)
+                conn.Open()
+                Using cmd As New MySqlCommand("SELECT * FROM config LIMIT 1", conn)
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        If reader.Read() Then
+                            clsGeVariaveis.EstoqueSeparado = reader.GetBoolean("EstoqueSeparado")
+                        End If
+                    End Using
+                End Using
+            End Using
 
             ' Etapa 5: Finalização
             carregaSistema.ReportProgress(100)

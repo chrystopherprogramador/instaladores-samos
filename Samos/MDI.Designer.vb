@@ -118,6 +118,7 @@ Partial Class MDI
         Me.TarifaçãoDiferenciadaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SobreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SairToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripComboBox1 = New System.Windows.Forms.ToolStripComboBox()
         Me.LateralEsquerdaLateralEsquerda = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -148,23 +149,24 @@ Partial Class MDI
         'Menu
         '
         Me.Menu.BackColor = System.Drawing.Color.White
-        Me.Menu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DadosBásicosToolStripMenuItem, Me.RelatóriosToolStripMenuItem, Me.ConsultasToolStripMenuItem, Me.CaixaToolStripMenuItem, Me.ReservasToolStripMenuItem, Me.TrocaDeUsuáriosToolStripMenuItem, Me.SobreToolStripMenuItem, Me.SairToolStripMenuItem})
+        Me.Menu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DadosBásicosToolStripMenuItem, Me.RelatóriosToolStripMenuItem, Me.ConsultasToolStripMenuItem, Me.CaixaToolStripMenuItem, Me.ReservasToolStripMenuItem, Me.TrocaDeUsuáriosToolStripMenuItem, Me.SobreToolStripMenuItem, Me.SairToolStripMenuItem, Me.ToolStripComboBox1})
         Me.Menu.Location = New System.Drawing.Point(0, 0)
         Me.Menu.Name = "Menu"
-        Me.Menu.Size = New System.Drawing.Size(1264, 24)
-        Me.Menu.TabIndex = 0
+        Me.Menu.Size = New System.Drawing.Size(1264, 27)
+        Me.Menu.TabIndex = 2
         Me.Menu.Text = "MenuStrip1"
         '
         'DadosBásicosToolStripMenuItem
         '
         Me.DadosBásicosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ÁreaDeServiçosToolStripMenuItem, Me.ProdToolStripMenuItem, Me.CategoriasDeMercadoriasToolStripMenuItem, Me.SuítesToolStripMenuItem, Me.CategoriasDeSuítesToolStripMenuItem, Me.UsuáriosToolStripMenuItem, Me.NíveisDeAcessoToolStripMenuItem, Me.HistóricoDeMovtosToolStripMenuItem, Me.OperadorasDeCartãoToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.FornecedoresToolStripMenuItem, Me.CartõesVIPToolStripMenuItem, Me.ToolStripSeparator1, Me.PromoçõesEspeciaisToolStripMenuItem, Me.TabelaDeAliquotasDeICMSToolStripMenuItem, Me.UtensíliosPDevoluçãoToolStripMenuItem, Me.FuncionáriosmanutençãolimpezaToolStripMenuItem, Me.CuponsDeDescontoToolStripMenuItem, Me.ToolStripSeparator2, Me.EstoqueMercadoriasToolStripMenuItem, Me.ContasAPagarReceberToolStripMenuItem, Me.ToolStripSeparator3, Me.InformaTarifaçãoToolStripMenuItem, Me.TabelaDePreçosDeSuítesToolStripMenuItem, Me.TabelaDeHoráriosDePernoitesToolStripMenuItem, Me.PromoçõesItensToolStripMenuItem})
         Me.DadosBásicosToolStripMenuItem.Name = "DadosBásicosToolStripMenuItem"
-        Me.DadosBásicosToolStripMenuItem.Size = New System.Drawing.Size(94, 20)
+        Me.DadosBásicosToolStripMenuItem.Size = New System.Drawing.Size(94, 23)
         Me.DadosBásicosToolStripMenuItem.Text = "Dados Básicos"
         '
         'ÁreaDeServiçosToolStripMenuItem
         '
         Me.ÁreaDeServiçosToolStripMenuItem.Name = "ÁreaDeServiçosToolStripMenuItem"
+        Me.ÁreaDeServiçosToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
         Me.ÁreaDeServiçosToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
         Me.ÁreaDeServiçosToolStripMenuItem.Text = "Área de Serviços"
         '
@@ -284,6 +286,7 @@ Partial Class MDI
         'MovimentosToolStripMenuItem
         '
         Me.MovimentosToolStripMenuItem.Name = "MovimentosToolStripMenuItem"
+        Me.MovimentosToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.M), System.Windows.Forms.Keys)
         Me.MovimentosToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
         Me.MovimentosToolStripMenuItem.Text = "Movimentos"
         '
@@ -308,6 +311,7 @@ Partial Class MDI
         'RequisiçõesToolStripMenuItem
         '
         Me.RequisiçõesToolStripMenuItem.Name = "RequisiçõesToolStripMenuItem"
+        Me.RequisiçõesToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
         Me.RequisiçõesToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
         Me.RequisiçõesToolStripMenuItem.Text = "Requisições"
         '
@@ -363,7 +367,7 @@ Partial Class MDI
         '
         Me.RelatóriosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EstoqueAbaixoDoMínimoToolStripMenuItem, Me.MovimentosPorIntervaloToolStripMenuItem, Me.PosiçãoAtualDoEstoqueToolStripMenuItem, Me.RelaçãoAnalíticaDosProdutosToolStripMenuItem, Me.RelatórioDeVendasDeMercadoriasToolStripMenuItem, Me.EstornoDeMercadoriasToolStripMenuItem, Me.TabelaDePreçosProdutosToolStripMenuItem, Me.RelatóriosDeVeículosToolStripMenuItem, Me.ToolStripSeparator4, Me.AvaliaçãoDasLimpezasDeSuítesToolStripMenuItem, Me.BrindesConcedidosToolStripMenuItem, Me.DescontosAutorizadosToolStripMenuItem, Me.DesistênciasToolStripMenuItem, Me.RelaçãoDeAniversariantesVipToolStripMenuItem, Me.ResumoDeCartõesPIXToolStripMenuItem, Me.ManutençõesToolStripMenuItem, Me.QtdeCarrosPorDiaToolStripMenuItem, Me.RegistroDePontoToolStripMenuItem, Me.RetornosDeCarrosDaEntradaToolStripMenuItem, Me.TaxaDeOcupaçãoPorHoraToolStripMenuItem, Me.TemposGaragemToolStripMenuItem, Me.TransferênciasDeSuítesToolStripMenuItem, Me.ValeFuncionáriosToolStripMenuItem, Me.ToolStripSeparator5, Me.ConsumoDeProdutosToolStripMenuItem, Me.FechamentoDeCaixaToolStripMenuItem})
         Me.RelatóriosToolStripMenuItem.Name = "RelatóriosToolStripMenuItem"
-        Me.RelatóriosToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
+        Me.RelatóriosToolStripMenuItem.Size = New System.Drawing.Size(71, 23)
         Me.RelatóriosToolStripMenuItem.Text = "Relatórios"
         '
         'EstoqueAbaixoDoMínimoToolStripMenuItem
@@ -524,7 +528,7 @@ Partial Class MDI
         '
         Me.ConsultasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsultaToolStripMenuItem, Me.FichaDeClientesToolStripMenuItem, Me.MovimentosItensPorSuítesToolStripMenuItem, Me.BônusCartãoVIPToolStripMenuItem})
         Me.ConsultasToolStripMenuItem.Name = "ConsultasToolStripMenuItem"
-        Me.ConsultasToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
+        Me.ConsultasToolStripMenuItem.Size = New System.Drawing.Size(71, 23)
         Me.ConsultasToolStripMenuItem.Text = "Consultas"
         '
         'ConsultaToolStripMenuItem
@@ -554,14 +558,14 @@ Partial Class MDI
         'CaixaToolStripMenuItem
         '
         Me.CaixaToolStripMenuItem.Name = "CaixaToolStripMenuItem"
-        Me.CaixaToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
+        Me.CaixaToolStripMenuItem.Size = New System.Drawing.Size(47, 23)
         Me.CaixaToolStripMenuItem.Text = "Caixa"
         '
         'ReservasToolStripMenuItem
         '
         Me.ReservasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RealizarReservaToolStripMenuItem, Me.MapaDeReservasToolStripMenuItem})
         Me.ReservasToolStripMenuItem.Name = "ReservasToolStripMenuItem"
-        Me.ReservasToolStripMenuItem.Size = New System.Drawing.Size(64, 20)
+        Me.ReservasToolStripMenuItem.Size = New System.Drawing.Size(64, 23)
         Me.ReservasToolStripMenuItem.Text = "Reservas"
         '
         'RealizarReservaToolStripMenuItem
@@ -580,12 +584,13 @@ Partial Class MDI
         '
         Me.TrocaDeUsuáriosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TrocaDeUsuáriosToolStripMenuItem1, Me.ToolStripSeparator6, Me.ConfiguraçõesToolStripMenuItem, Me.ConfiguraCartãoVIPToolStripMenuItem, Me.ToolStripSeparator7, Me.BaixaPenhoraToolStripMenuItem, Me.InformaEscalaDeFuncionáriosToolStripMenuItem, Me.InterdiçõesDeSuítesToolStripMenuItem, Me.FilaParaClimataizaçãoAntecipadaToolStripMenuItem, Me.LogDoSistemaToolStripMenuItem, Me.MotivosDeRevisãoManutençãoToolStripMenuItem, Me.NegativaClienteToolStripMenuItem, Me.OcorrênciasDeClientesToolStripMenuItem, Me.OcorrênciasDeManutençãoSuítesToolStripMenuItem, Me.VinculaReservaAoMovimentoToolStripMenuItem, Me.ToolStripSeparator8, Me.AlteraTipoDeRecebimentoToolStripMenuItem, Me.DescontosAutorizadosToolStripMenuItem1, Me.MotivosDeDescontosAutorizadosToolStripMenuItem, Me.ToolStripSeparator9, Me.PernoiteDiferenciadaToolStripMenuItem, Me.TarifaçãoDiferenciadaToolStripMenuItem})
         Me.TrocaDeUsuáriosToolStripMenuItem.Name = "TrocaDeUsuáriosToolStripMenuItem"
-        Me.TrocaDeUsuáriosToolStripMenuItem.Size = New System.Drawing.Size(84, 20)
+        Me.TrocaDeUsuáriosToolStripMenuItem.Size = New System.Drawing.Size(84, 23)
         Me.TrocaDeUsuáriosToolStripMenuItem.Text = "Ferramentas"
         '
         'TrocaDeUsuáriosToolStripMenuItem1
         '
         Me.TrocaDeUsuáriosToolStripMenuItem1.Name = "TrocaDeUsuáriosToolStripMenuItem1"
+        Me.TrocaDeUsuáriosToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.U), System.Windows.Forms.Keys)
         Me.TrocaDeUsuáriosToolStripMenuItem1.Size = New System.Drawing.Size(265, 22)
         Me.TrocaDeUsuáriosToolStripMenuItem1.Text = "Troca de Usuários"
         '
@@ -597,6 +602,7 @@ Partial Class MDI
         'ConfiguraçõesToolStripMenuItem
         '
         Me.ConfiguraçõesToolStripMenuItem.Name = "ConfiguraçõesToolStripMenuItem"
+        Me.ConfiguraçõesToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.G), System.Windows.Forms.Keys)
         Me.ConfiguraçõesToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.ConfiguraçõesToolStripMenuItem.Text = "Configurações"
         '
@@ -626,6 +632,7 @@ Partial Class MDI
         'InterdiçõesDeSuítesToolStripMenuItem
         '
         Me.InterdiçõesDeSuítesToolStripMenuItem.Name = "InterdiçõesDeSuítesToolStripMenuItem"
+        Me.InterdiçõesDeSuítesToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.I), System.Windows.Forms.Keys)
         Me.InterdiçõesDeSuítesToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.InterdiçõesDeSuítesToolStripMenuItem.Text = "Interdições de suítes"
         '
@@ -638,6 +645,7 @@ Partial Class MDI
         'LogDoSistemaToolStripMenuItem
         '
         Me.LogDoSistemaToolStripMenuItem.Name = "LogDoSistemaToolStripMenuItem"
+        Me.LogDoSistemaToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
         Me.LogDoSistemaToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.LogDoSistemaToolStripMenuItem.Text = "Log do sistema"
         '
@@ -679,12 +687,14 @@ Partial Class MDI
         'AlteraTipoDeRecebimentoToolStripMenuItem
         '
         Me.AlteraTipoDeRecebimentoToolStripMenuItem.Name = "AlteraTipoDeRecebimentoToolStripMenuItem"
+        Me.AlteraTipoDeRecebimentoToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.T), System.Windows.Forms.Keys)
         Me.AlteraTipoDeRecebimentoToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.AlteraTipoDeRecebimentoToolStripMenuItem.Text = "Altera tipo de recebimento"
         '
         'DescontosAutorizadosToolStripMenuItem1
         '
         Me.DescontosAutorizadosToolStripMenuItem1.Name = "DescontosAutorizadosToolStripMenuItem1"
+        Me.DescontosAutorizadosToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D), System.Windows.Forms.Keys)
         Me.DescontosAutorizadosToolStripMenuItem1.Size = New System.Drawing.Size(265, 22)
         Me.DescontosAutorizadosToolStripMenuItem1.Text = "Descontos autorizados"
         '
@@ -714,14 +724,21 @@ Partial Class MDI
         'SobreToolStripMenuItem
         '
         Me.SobreToolStripMenuItem.Name = "SobreToolStripMenuItem"
-        Me.SobreToolStripMenuItem.Size = New System.Drawing.Size(49, 20)
+        Me.SobreToolStripMenuItem.Size = New System.Drawing.Size(49, 23)
         Me.SobreToolStripMenuItem.Text = "Sobre"
         '
         'SairToolStripMenuItem
         '
         Me.SairToolStripMenuItem.Name = "SairToolStripMenuItem"
-        Me.SairToolStripMenuItem.Size = New System.Drawing.Size(38, 20)
+        Me.SairToolStripMenuItem.Size = New System.Drawing.Size(38, 23)
         Me.SairToolStripMenuItem.Text = "Sair"
+        '
+        'ToolStripComboBox1
+        '
+        Me.ToolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ToolStripComboBox1.Items.AddRange(New Object() {"Menu: Kambam", "Menu: Padrão"})
+        Me.ToolStripComboBox1.Name = "ToolStripComboBox1"
+        Me.ToolStripComboBox1.Size = New System.Drawing.Size(121, 23)
         '
         'LateralEsquerdaLateralEsquerda
         '
@@ -737,7 +754,7 @@ Partial Class MDI
         Me.LateralEsquerdaLateralEsquerda.Controls.Add(Me.Label11)
         Me.LateralEsquerdaLateralEsquerda.Dock = System.Windows.Forms.DockStyle.Top
         Me.LateralEsquerdaLateralEsquerda.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.LateralEsquerdaLateralEsquerda.Location = New System.Drawing.Point(0, 24)
+        Me.LateralEsquerdaLateralEsquerda.Location = New System.Drawing.Point(0, 27)
         Me.LateralEsquerdaLateralEsquerda.Name = "LateralEsquerdaLateralEsquerda"
         Me.LateralEsquerdaLateralEsquerda.Size = New System.Drawing.Size(1264, 112)
         Me.LateralEsquerdaLateralEsquerda.TabIndex = 47
@@ -780,7 +797,7 @@ Partial Class MDI
         Me.btnBuscarComandas.Location = New System.Drawing.Point(528, 13)
         Me.btnBuscarComandas.Name = "btnBuscarComandas"
         Me.btnBuscarComandas.Size = New System.Drawing.Size(80, 84)
-        Me.btnBuscarComandas.TabIndex = 32
+        Me.btnBuscarComandas.TabIndex = 5
         Me.btnBuscarComandas.Tag = "N"
         Me.btnBuscarComandas.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnBuscarComandas.UseVisualStyleBackColor = False
@@ -797,7 +814,7 @@ Partial Class MDI
         Me.btnItens.Location = New System.Drawing.Point(357, 13)
         Me.btnItens.Name = "btnItens"
         Me.btnItens.Size = New System.Drawing.Size(80, 84)
-        Me.btnItens.TabIndex = 20
+        Me.btnItens.TabIndex = 3
         Me.btnItens.Tag = "N"
         Me.btnItens.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnItens.UseVisualStyleBackColor = False
@@ -814,7 +831,7 @@ Partial Class MDI
         Me.btnDashboard.Location = New System.Drawing.Point(614, 13)
         Me.btnDashboard.Name = "btnDashboard"
         Me.btnDashboard.Size = New System.Drawing.Size(80, 84)
-        Me.btnDashboard.TabIndex = 33
+        Me.btnDashboard.TabIndex = 6
         Me.btnDashboard.Tag = "N"
         Me.btnDashboard.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnDashboard.UseVisualStyleBackColor = False
@@ -831,7 +848,7 @@ Partial Class MDI
         Me.btnVendaRapida.Location = New System.Drawing.Point(443, 13)
         Me.btnVendaRapida.Name = "btnVendaRapida"
         Me.btnVendaRapida.Size = New System.Drawing.Size(80, 84)
-        Me.btnVendaRapida.TabIndex = 35
+        Me.btnVendaRapida.TabIndex = 4
         Me.btnVendaRapida.Tag = "N"
         Me.btnVendaRapida.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnVendaRapida.UseVisualStyleBackColor = False
@@ -862,7 +879,7 @@ Partial Class MDI
         '
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(29, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(122, Byte), Integer))
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 136)
+        Me.Panel2.Location = New System.Drawing.Point(0, 139)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1264, 5)
         Me.Panel2.TabIndex = 48
@@ -879,9 +896,9 @@ Partial Class MDI
         Me.PNSTATUS.Controls.Add(Me.disL)
         Me.PNSTATUS.Controls.Add(Me.disD)
         Me.PNSTATUS.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PNSTATUS.Location = New System.Drawing.Point(1205, 141)
+        Me.PNSTATUS.Location = New System.Drawing.Point(1205, 144)
         Me.PNSTATUS.Name = "PNSTATUS"
-        Me.PNSTATUS.Size = New System.Drawing.Size(59, 540)
+        Me.PNSTATUS.Size = New System.Drawing.Size(59, 537)
         Me.PNSTATUS.TabIndex = 50
         '
         'disX
@@ -984,9 +1001,9 @@ Partial Class MDI
         Me.pnSuite.AutoScroll = True
         Me.pnSuite.BackColor = System.Drawing.Color.FromArgb(CType(CType(249, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(251, Byte), Integer))
         Me.pnSuite.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnSuite.Location = New System.Drawing.Point(0, 141)
+        Me.pnSuite.Location = New System.Drawing.Point(0, 144)
         Me.pnSuite.Name = "pnSuite"
-        Me.pnSuite.Size = New System.Drawing.Size(1205, 540)
+        Me.pnSuite.Size = New System.Drawing.Size(1205, 537)
         Me.pnSuite.TabIndex = 56
         '
         'MDI
@@ -1132,4 +1149,5 @@ Partial Class MDI
     Friend WithEvents disX As Label
     Friend WithEvents disM As Label
     Friend WithEvents pnSuite As FlowLayoutPanel
+    Friend WithEvents ToolStripComboBox1 As ToolStripComboBox
 End Class
