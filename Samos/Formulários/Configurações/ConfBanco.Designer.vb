@@ -61,6 +61,7 @@ Partial Class ConfBanco
         Me.txtServidor.Name = "txtServidor"
         Me.txtServidor.Size = New System.Drawing.Size(152, 20)
         Me.txtServidor.TabIndex = 0
+        Me.txtServidor.Tag = "P"
         '
         'txtusuario
         '
@@ -68,6 +69,7 @@ Partial Class ConfBanco
         Me.txtusuario.Name = "txtusuario"
         Me.txtusuario.Size = New System.Drawing.Size(152, 20)
         Me.txtusuario.TabIndex = 1
+        Me.txtusuario.Tag = "P"
         '
         'txtSenha
         '
@@ -75,6 +77,7 @@ Partial Class ConfBanco
         Me.txtSenha.Name = "txtSenha"
         Me.txtSenha.Size = New System.Drawing.Size(152, 20)
         Me.txtSenha.TabIndex = 2
+        Me.txtSenha.Tag = "P"
         Me.txtSenha.UseSystemPasswordChar = True
         '
         'Label2
@@ -92,6 +95,7 @@ Partial Class ConfBanco
         Me.txtBanco.Name = "txtBanco"
         Me.txtBanco.Size = New System.Drawing.Size(152, 20)
         Me.txtBanco.TabIndex = 3
+        Me.txtBanco.Tag = "P"
         '
         'Label3
         '

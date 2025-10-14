@@ -119,7 +119,9 @@
                     txt.ForeColor = Color.FromArgb(30, 30, 30)
                     txt.Font = fontePadrao
                     txt.Margin = New Padding(5)
-                    txt.CharacterCasing = CharacterCasing.Upper
+                    If txt.Tag <> "P" Then
+                        txt.CharacterCasing = CharacterCasing.Upper
+                    End If
                     txt.Height = 28
                 End If
 

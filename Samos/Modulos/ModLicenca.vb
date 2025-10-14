@@ -43,8 +43,11 @@ Module ModLicenca
     Public Sub Bloqueio()
         Try
             LICENCA = False
-            Dim endWin As String = Environment.GetFolderPath(Environment.SpecialFolder.Windows)
-            Dim arquivo As String = Path.Combine(endWin, "Controlecd.sys")
+            Dim appFolder As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Samos")
+            If Not Directory.Exists(appFolder) Then
+                Directory.CreateDirectory(appFolder)
+            End If
+            Dim arquivo As String = Path.Combine(appFolder, "Controlecd.sys")
 
             If Not File.Exists(arquivo) Then
                 Dim Linha As String = GeraSerial(DriveSys, DateAdd(DateInterval.Day, 10, Date.Today))
