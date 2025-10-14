@@ -5,7 +5,23 @@ Imports MySql.Data.MySqlClient
 Public Class EspecieSelecao
 
     Private DtEspecie As DataTable = Nothing
+    Sub New()
 
+        ' Esta chamada é requerida pelo designer.
+        InitializeComponent()
+
+        Dim cls As New clsGeForm(Me, True, False, False,,, Sub()
+                                                               btnNovo.PerformClick()
+                                                           End Sub, Sub()
+                                                                        btnAlterar.PerformClick()
+                                                                    End Sub, Sub()
+                                                                                 btnExcluir.PerformClick()
+                                                                             End Sub, Sub()
+                                                                                          btnImprimir.PerformClick()
+                                                                                      End Sub)
+        cls.ConfiguraMe()
+
+    End Sub
     Private Sub MontaGrid()
 
 
@@ -30,16 +46,7 @@ Public Class EspecieSelecao
     End Sub
 
     Private Sub EspecieSelecao_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim cls As New clsGeForm(Me, True, False, False,,, Sub()
-                                                               btnNovo.PerformClick()
-                                                           End Sub, Sub()
-                                                                        btnAlterar.PerformClick()
-                                                                    End Sub, Sub()
-                                                                                 btnExcluir.PerformClick()
-                                                                             End Sub, Sub()
-                                                                                          btnImprimir.PerformClick()
-                                                                                      End Sub)
-        cls.ConfiguraMe()
+
         RefreshDados()
 
     End Sub

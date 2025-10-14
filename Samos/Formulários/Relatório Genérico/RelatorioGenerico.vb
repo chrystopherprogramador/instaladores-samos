@@ -5,7 +5,11 @@ Public Class RelatorioGenerico
     Public Property DataSource As DataTable
     Public Property Titulo As String
 
-    Private Sub RelatorioGenerico_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Sub New()
+
+        ' Esta chamada é requerida pelo designer.
+        InitializeComponent()
+
         Dim form As New clsGeForm(Me, True, False, False,,, Sub()
                                                                 ExportarParaPDF(DataSource, Titulo)
                                                             End Sub, Sub()
@@ -14,6 +18,10 @@ Public Class RelatorioGenerico
                                                                                    ImprimirRelatorio(DataSource, Titulo)
                                                                                End Sub)
         form.ConfiguraMe()
+
+
+    End Sub
+    Private Sub RelatorioGenerico_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
     Private Sub ExportarParaPDF(dt As DataTable, titulo As String)

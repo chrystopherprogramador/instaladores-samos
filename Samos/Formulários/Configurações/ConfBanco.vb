@@ -1,12 +1,19 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class ConfBanco
-    Private Sub ConfBanco_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    Public Sub New()
+
+        ' Esta chamada é requerida pelo designer.
+        InitializeComponent()
+
         Dim config As New clsGeForm(Me, True, False, False, Sub()
                                                                 btnGravar.PerformClick()
                                                             End Sub)
         config.ConfiguraMe()
+
     End Sub
+
 
     Private Sub btnGravar_Click(sender As Object, e As EventArgs) Handles btnGravar.Click
 

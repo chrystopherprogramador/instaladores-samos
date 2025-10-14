@@ -1,16 +1,24 @@
 ﻿Public Class Especie
 
     Public Property CodigoAtual As Long = 0
+
+    Sub New()
+
+        ' Esta chamada é requerida pelo designer.
+        InitializeComponent()
+
+        Dim form As New clsGeForm(Me, True, False, False, Sub()
+                                                              btnGravar.PerformClick()
+                                                          End Sub)
+        form.ConfiguraMe()
+    End Sub
     Private Sub Especie_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Try
 
 
 
-            Dim form As New clsGeForm(Me, True, False, False, Sub()
-                                                                  btnGravar.PerformClick()
-                                                              End Sub)
-            form.ConfiguraMe()
+
 
             If CodigoAtual <> 0 Then
                 Dim especie As New crEspecie With {

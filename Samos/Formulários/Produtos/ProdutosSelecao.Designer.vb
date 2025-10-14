@@ -127,6 +127,7 @@ Partial Class ProdutosSelecao
         Me.Controls.Add(Me.btnAlterar)
         Me.Controls.Add(Me.btnNovo)
         Me.Name = "ProdutosSelecao"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Produtos"
         CType(Me.GridProduto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

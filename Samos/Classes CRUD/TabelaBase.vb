@@ -46,12 +46,32 @@ Public MustInherit Class TabelaBase
         Using conn As New MySqlConnection(clsGeVariaveis._strPathBanco)
             conn.Open()
             Dim campos = ObterCampos()
-            Dim setClause = String.Join(",", campos.Keys.Where(Function(k) k <> CampoChave).Select(Function(k) $"{k}=@{k}"))
+
+            ' Filtra apenas os campos com valor útil e que não são a chave
+            Dim camposValidos = campos.Where(Function(kvp)
+                                                 Dim nome = kvp.Key
+                                                 Dim valor = kvp.Value
+
+                                                 If nome = CampoChave Then Return False
+                                                 If valor Is Nothing Then Return False
+                                                 If TypeOf valor Is String AndAlso String.IsNullOrWhiteSpace(valor.ToString()) Then Return False
+                                                 Return True
+                                             End Function).ToDictionary(Function(kvp) kvp.Key, Function(kvp) kvp.Value)
+
+            ' Monta o SET apenas com os campos válidos
+            Dim setClause = String.Join(",", camposValidos.Keys.Select(Function(k) $"{k}=@{k}"))
             Dim sql = $"UPDATE {NomeTabela} SET {setClause} WHERE {CampoChave}=@{CampoChave}"
+
             Dim cmd As New MySqlCommand(sql, conn)
-            For Each kvp In campos
+
+            ' Adiciona os parâmetros válidos
+            For Each kvp In camposValidos
                 cmd.Parameters.AddWithValue("@" & kvp.Key, kvp.Value)
             Next
+
+            ' Adiciona o parâmetro da chave
+            cmd.Parameters.AddWithValue("@" & CampoChave, campos(CampoChave))
+
             cmd.ExecuteNonQuery()
         End Using
     End Sub

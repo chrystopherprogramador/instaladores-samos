@@ -4,9 +4,18 @@ Imports MySql.Data.MySqlClient
 Public Class Carregando
 
     Private WithEvents carregaSistema As New System.ComponentModel.BackgroundWorker()
-    Private Sub Carregando_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    Public Sub New()
+
+        ' Esta chamada é requerida pelo designer.
+        InitializeComponent()
+
         Dim clsGeForm As New clsGeForm(Me, True, False, False)
         clsGeForm.ConfiguraMe()
+
+    End Sub
+    Private Sub Carregando_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
 
 
         carregaSistema.WorkerReportsProgress = True

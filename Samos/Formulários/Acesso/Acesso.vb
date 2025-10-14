@@ -2,9 +2,17 @@
 Imports MySql.Data.MySqlClient
 
 Public Class Acesso
-    Private Sub Acesso_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    Public Sub New()
+
+        InitializeComponent()
+
         Dim clsGeForm As New clsGeForm(Me, True, False, False)
         clsGeForm.ConfiguraMe()
+
+    End Sub
+    Private Sub Acesso_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
 
         Dim Dt = clsGeBanco.dataTable("SELECT CODIGO,NOME FROM USUARIOS WHERE INATIVO = 0 ORDER BY NOME")
 

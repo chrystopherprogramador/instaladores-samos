@@ -26,7 +26,11 @@ Public Class AreaSelecao
 
     End Sub
 
-    Private Sub AreaSelecao_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Sub New()
+
+        ' Esta chamada é requerida pelo designer.
+        InitializeComponent()
+
         Dim cls As New clsGeForm(Me, True, False, False,,, Sub()
                                                                btnNovo.PerformClick()
                                                            End Sub, Sub()
@@ -37,6 +41,9 @@ Public Class AreaSelecao
                                                                                           btnImprimir.PerformClick()
                                                                                       End Sub)
         cls.ConfiguraMe()
+
+    End Sub
+    Private Sub AreaSelecao_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         RefreshDados()
     End Sub

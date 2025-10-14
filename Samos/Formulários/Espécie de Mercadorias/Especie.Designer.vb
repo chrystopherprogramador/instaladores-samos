@@ -57,7 +57,7 @@ Partial Class Especie
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(392, 41)
         Me.Label4.TabIndex = 13
-        Me.Label4.Text = "Área de Serviços"
+        Me.Label4.Text = "Espécies de Mercadoria"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'txtCodigo
@@ -108,7 +108,7 @@ Partial Class Especie
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Name = "Especie"
-        Me.Text = "Especie"
+        Me.Text = "Espécies de Mercadoria"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

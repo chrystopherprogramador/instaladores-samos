@@ -18,12 +18,16 @@ Public Class clsGeBanco
         Return dt
     End Function
 
-    Public Shared Function IncrementarCampo(tabela As String, campo As String) As Integer
+    Public Shared Function IncrementarCampo(tabela As String, campo As String, Optional Where As String = "") As Integer
         Try
             Using conn As New MySqlConnection(clsGeVariaveis._strPathBanco)
                 conn.Open()
 
-                Dim cmd As New MySqlCommand($"SELECT MAX({campo}) FROM {tabela}", conn)
+                If Not String.Empty = Where Then
+                    Where = $"WHERE {Where}"
+                End If
+
+                Dim cmd As New MySqlCommand($"SELECT MAX({campo}) FROM {tabela} {Where}", conn)
                 Dim resultado = cmd.ExecuteScalar()
 
                 If resultado IsNot DBNull.Value AndAlso resultado IsNot Nothing Then

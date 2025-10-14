@@ -140,6 +140,8 @@ Partial Class MDI
         Me.disL = New System.Windows.Forms.Label()
         Me.disD = New System.Windows.Forms.Label()
         Me.pnSuite = New System.Windows.Forms.FlowLayoutPanel()
+        Me.LicençaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.lblUsuario = New System.Windows.Forms.Label()
         Me.Menu.SuspendLayout()
         Me.LateralEsquerdaLateralEsquerda.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -582,7 +584,7 @@ Partial Class MDI
         '
         'TrocaDeUsuáriosToolStripMenuItem
         '
-        Me.TrocaDeUsuáriosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TrocaDeUsuáriosToolStripMenuItem1, Me.ToolStripSeparator6, Me.ConfiguraçõesToolStripMenuItem, Me.ConfiguraCartãoVIPToolStripMenuItem, Me.ToolStripSeparator7, Me.BaixaPenhoraToolStripMenuItem, Me.InformaEscalaDeFuncionáriosToolStripMenuItem, Me.InterdiçõesDeSuítesToolStripMenuItem, Me.FilaParaClimataizaçãoAntecipadaToolStripMenuItem, Me.LogDoSistemaToolStripMenuItem, Me.MotivosDeRevisãoManutençãoToolStripMenuItem, Me.NegativaClienteToolStripMenuItem, Me.OcorrênciasDeClientesToolStripMenuItem, Me.OcorrênciasDeManutençãoSuítesToolStripMenuItem, Me.VinculaReservaAoMovimentoToolStripMenuItem, Me.ToolStripSeparator8, Me.AlteraTipoDeRecebimentoToolStripMenuItem, Me.DescontosAutorizadosToolStripMenuItem1, Me.MotivosDeDescontosAutorizadosToolStripMenuItem, Me.ToolStripSeparator9, Me.PernoiteDiferenciadaToolStripMenuItem, Me.TarifaçãoDiferenciadaToolStripMenuItem})
+        Me.TrocaDeUsuáriosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TrocaDeUsuáriosToolStripMenuItem1, Me.ToolStripSeparator6, Me.ConfiguraçõesToolStripMenuItem, Me.ConfiguraCartãoVIPToolStripMenuItem, Me.ToolStripSeparator7, Me.BaixaPenhoraToolStripMenuItem, Me.InformaEscalaDeFuncionáriosToolStripMenuItem, Me.InterdiçõesDeSuítesToolStripMenuItem, Me.FilaParaClimataizaçãoAntecipadaToolStripMenuItem, Me.LogDoSistemaToolStripMenuItem, Me.MotivosDeRevisãoManutençãoToolStripMenuItem, Me.NegativaClienteToolStripMenuItem, Me.OcorrênciasDeClientesToolStripMenuItem, Me.OcorrênciasDeManutençãoSuítesToolStripMenuItem, Me.VinculaReservaAoMovimentoToolStripMenuItem, Me.ToolStripSeparator8, Me.AlteraTipoDeRecebimentoToolStripMenuItem, Me.DescontosAutorizadosToolStripMenuItem1, Me.MotivosDeDescontosAutorizadosToolStripMenuItem, Me.ToolStripSeparator9, Me.PernoiteDiferenciadaToolStripMenuItem, Me.TarifaçãoDiferenciadaToolStripMenuItem, Me.LicençaToolStripMenuItem})
         Me.TrocaDeUsuáriosToolStripMenuItem.Name = "TrocaDeUsuáriosToolStripMenuItem"
         Me.TrocaDeUsuáriosToolStripMenuItem.Size = New System.Drawing.Size(84, 23)
         Me.TrocaDeUsuáriosToolStripMenuItem.Text = "Ferramentas"
@@ -743,6 +745,7 @@ Partial Class MDI
         'LateralEsquerdaLateralEsquerda
         '
         Me.LateralEsquerdaLateralEsquerda.BackColor = System.Drawing.Color.White
+        Me.LateralEsquerdaLateralEsquerda.Controls.Add(Me.lblUsuario)
         Me.LateralEsquerdaLateralEsquerda.Controls.Add(Me.Button1)
         Me.LateralEsquerdaLateralEsquerda.Controls.Add(Me.TextBox1)
         Me.LateralEsquerdaLateralEsquerda.Controls.Add(Me.PictureBox1)
@@ -1006,6 +1009,23 @@ Partial Class MDI
         Me.pnSuite.Size = New System.Drawing.Size(1205, 537)
         Me.pnSuite.TabIndex = 56
         '
+        'LicençaToolStripMenuItem
+        '
+        Me.LicençaToolStripMenuItem.Name = "LicençaToolStripMenuItem"
+        Me.LicençaToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.LicençaToolStripMenuItem.Text = "Licença"
+        '
+        'lblUsuario
+        '
+        Me.lblUsuario.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblUsuario.Location = New System.Drawing.Point(357, 6)
+        Me.lblUsuario.Name = "lblUsuario"
+        Me.lblUsuario.Size = New System.Drawing.Size(337, 20)
+        Me.lblUsuario.TabIndex = 50
+        Me.lblUsuario.Text = "Samos"
+        Me.lblUsuario.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        '
         'MDI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1150,4 +1170,6 @@ Partial Class MDI
     Friend WithEvents disM As Label
     Friend WithEvents pnSuite As FlowLayoutPanel
     Friend WithEvents ToolStripComboBox1 As ToolStripComboBox
+    Friend WithEvents LicençaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents lblUsuario As Label
 End Class

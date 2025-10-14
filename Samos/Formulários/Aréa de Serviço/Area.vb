@@ -5,13 +5,20 @@ Public Class Area
 
     Public Property CodigoAtual As Long = 0
 
-    Private Sub Area_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Sub New()
+
+        ' Esta chamada é requerida pelo designer.
+        InitializeComponent()
 
         'Configura Formulário
         Dim form As New clsGeForm(Me, True, False, False, Sub()
                                                               btnGravar.PerformClick()
                                                           End Sub)
         form.ConfiguraMe()
+
+    End Sub
+    Private Sub Area_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
 
 
         'Carrega DataTable com todas as impressoras instaladas

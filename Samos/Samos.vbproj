@@ -161,8 +161,11 @@
   <ItemGroup>
     <Compile Include="Classes CRUD\crAreaServico.vb" />
     <Compile Include="Classes CRUD\crEspecie.vb" />
+    <Compile Include="Classes CRUD\crSaldoItens.vb" />
     <Compile Include="Classes CRUD\crSaldoItens2.vb" />
+    <Compile Include="Classes CRUD\crUsuario.vb" />
     <Compile Include="Classes CRUD\TabelaBase.vb" />
+    <Compile Include="Classes CRUD\crProdutos.vb" />
     <Compile Include="Classes Gerenciais\clsGeBanco.vb" />
     <Compile Include="Classes Gerenciais\clsGeCarregaSuite.vb" />
     <Compile Include="Classes Gerenciais\clsGeForm.vb" />
@@ -186,6 +189,12 @@
       <DependentUpon>AreaSelecao.vb</DependentUpon>
     </Compile>
     <Compile Include="Formulários\Aréa de Serviço\AreaSelecao.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\Busca\Busca.Designer.vb">
+      <DependentUpon>Busca.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Busca\Busca.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulários\Carregando\Carregando.Designer.vb">
@@ -218,6 +227,18 @@
     <Compile Include="Formulários\Informa Tarifação\InformaTarifacao.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formulários\Licença\Licenca.Designer.vb">
+      <DependentUpon>Licenca.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Licença\Licenca.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\Produtos\Produtos.Designer.vb">
+      <DependentUpon>Produtos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Produtos\Produtos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formulários\Produtos\ProdutosSelecao.Designer.vb">
       <DependentUpon>ProdutosSelecao.vb</DependentUpon>
     </Compile>
@@ -230,6 +251,18 @@
     <Compile Include="Formulários\Relatório Genérico\RelatorioGenerico.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formulários\Usuários\Usuario.Designer.vb">
+      <DependentUpon>Usuario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Usuários\Usuario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\Usuários\UsuariosSelecao.Designer.vb">
+      <DependentUpon>UsuariosSelecao.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Usuários\UsuariosSelecao.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MDI.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +271,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulos\mdlInst.vb" />
+    <Compile Include="Modulos\ModLicenca.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -265,6 +299,9 @@
     <EmbeddedResource Include="Formulários\Aréa de Serviço\AreaSelecao.resx">
       <DependentUpon>AreaSelecao.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Busca\Busca.resx">
+      <DependentUpon>Busca.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Carregando\Carregando.resx">
       <DependentUpon>Carregando.vb</DependentUpon>
     </EmbeddedResource>
@@ -280,11 +317,23 @@
     <EmbeddedResource Include="Formulários\Informa Tarifação\InformaTarifacao.resx">
       <DependentUpon>InformaTarifacao.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Licença\Licenca.resx">
+      <DependentUpon>Licenca.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Produtos\Produtos.resx">
+      <DependentUpon>Produtos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Produtos\ProdutosSelecao.resx">
       <DependentUpon>ProdutosSelecao.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Relatório Genérico\RelatorioGenerico.resx">
       <DependentUpon>RelatorioGenerico.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Usuários\Usuario.resx">
+      <DependentUpon>Usuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Usuários\UsuariosSelecao.resx">
+      <DependentUpon>UsuariosSelecao.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDI.resx">
       <DependentUpon>MDI.vb</DependentUpon>

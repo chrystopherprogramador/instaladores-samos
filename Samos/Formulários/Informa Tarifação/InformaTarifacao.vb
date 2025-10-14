@@ -161,16 +161,22 @@ Public Class InformaTarifacao
         tbl.ResumeLayout()
     End Sub
 
+    Public Sub New()
 
+        ' Esta chamada é requerida pelo designer.
+        InitializeComponent()
+
+        Dim formC As New clsGeForm(Me, True, False, False, Sub()
+                                                               cmbGravar.PerformClick()
+                                                           End Sub)
+        formC.ConfiguraMe()
+
+    End Sub
     Private Sub InformaTarifacao_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Try
 
 
-            Dim formC As New clsGeForm(Me, True, False, False, Sub()
-                                                                   cmbGravar.PerformClick()
-                                                               End Sub)
-            formC.ConfiguraMe()
 
             Using conn As New MySqlConnection(clsGeVariaveis._strPathBanco)
                 conn.Open()

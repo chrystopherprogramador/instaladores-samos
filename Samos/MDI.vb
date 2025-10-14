@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.ComponentModel
+Imports MySql.Data.MySqlClient
 Imports Samos.clsGeCarregaSuite
 
 Public Class MDI
@@ -7,10 +8,17 @@ Public Class MDI
 
     Private WithEvents atualizaTimer As New Timer()
 
+    Private WithEvents timerHora As New Timer()
+
 
 
     Dim clsSuite As clsGeCarregaSuite
-    Private Sub MDI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+    Public Sub New()
+
+        ' Esta chamada é requerida pelo designer.
+        InitializeComponent()
 
         'Dupla verificação de carregamento
 
@@ -30,24 +38,36 @@ Public Class MDI
             Exit Sub
         End If
 
-        ToolStripComboBox1.SelectedIndex = 0
+
+
+
+    End Sub
+    Private Sub MDI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim config As New clsGeForm(Me, True, True, True)
         config.ConfiguraMe()
+
+        ToolStripComboBox1.SelectedIndex = 0
+
 
         clsSuite = New clsGeCarregaSuite(pnSuite, Me)
         clsSuite.CarregaSuite()
 
         atualizaTimer.Interval = 3000
         atualizaTimer.Start()
+        timerHora.Interval = 1000
+        timerHora.Start()
 
         clsSuite.ConstrutorPainel()
 
         AtualizaLabelsDeSituacao()
 
+
     End Sub
 
-
+    Private Sub timerHora_Tick(sender As Object, e As EventArgs) Handles timerHora.Tick
+        disHora.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")
+    End Sub
 
     Private Sub atualizaTimer_Tick(sender As Object, e As EventArgs) Handles atualizaTimer.Tick
         Dim modoSelecionado As ModoLayoutSuite
@@ -118,7 +138,11 @@ Public Class MDI
             If clsGeVariaveis.vUserLogado = False Then
                 Dim myForm As New Acesso
                 myForm.ShowDialog()
+            Else
+                lblUsuario.Text = $"Usuário logado {clsGeVariaveis.vNomeUsuario}"
             End If
+
+            Bloqueio()
         End If
     End Sub
 
@@ -186,6 +210,28 @@ Public Class MDI
 
     Private Sub ProdToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProdToolStripMenuItem.Click
         Dim myForm As New ProdutosSelecao
+        myForm.ShowDialog()
+    End Sub
+
+    Private Sub SairToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SairToolStripMenuItem.Click
+        Close()
+    End Sub
+
+    Private Sub MDI_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        If MsgBox("Deseja realmente sair do sistema?", vbQuestion + vbYesNo, "Atenção") = vbNo Then
+            e.Cancel = True
+        Else
+            Application.Exit()
+        End If
+    End Sub
+
+    Private Sub UsuáriosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuáriosToolStripMenuItem.Click
+        Dim myForm As New UsuariosSelecao
+        myForm.ShowDialog()
+    End Sub
+
+    Private Sub LicençaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LicençaToolStripMenuItem.Click
+        Dim myForm As New Licenca
         myForm.ShowDialog()
     End Sub
 End Class

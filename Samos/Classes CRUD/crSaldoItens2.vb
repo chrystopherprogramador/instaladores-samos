@@ -16,7 +16,7 @@
 
     Protected Overrides ReadOnly Property CampoChave As String
         Get
-            Return "Item"
+            Return "item"
         End Get
     End Property
 End Class
