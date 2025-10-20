@@ -39,11 +39,16 @@ Public Class clsGeScriptBanco
 
                 For Each comando In ScriptBanco
                     Dim sql = comando.Trim()
-                    If Not String.IsNullOrWhiteSpace(sql) Then
-                        Using cmd As New MySqlCommand(sql, connBanco)
-                            cmd.ExecuteNonQuery()
-                        End Using
-                    End If
+                    Try
+                        If Not String.IsNullOrWhiteSpace(sql) Then
+                            Using cmd As New MySqlCommand(sql, connBanco)
+                                cmd.ExecuteNonQuery()
+                            End Using
+                        End If
+                    Catch ex As Exception
+                        MsgBox($"Erro ao executar script da tabela {comando}", vbInformation)
+                    End Try
+
                 Next
             End Using
 
@@ -69,7 +74,131 @@ Public Class clsGeScriptBanco
                 "CREATE TABLE IF NOT EXISTS `ClientesVip` (`Codigo` INT NOT NULL, `CPF` VARCHAR(25), `Desconto` TINYINT(1), `PercDesconto` INT, `DescontoTotal` TINYINT(1), `LiberaAdic` TINYINT(1), `NumeroCartao` INT, `ValidadeCartao` DATETIME, PRIMARY KEY (`Codigo`))",
                 "CREATE TABLE IF NOT EXISTS `Climatizacao` (`Categoria` VARCHAR(4) NOT NULL, `QtdeFila` INT, `Horaini` DATETIME, `Horafin` DATETIME, `Ativo` TINYINT(1), PRIMARY KEY (`Categoria`))",
                 "CREATE TABLE IF NOT EXISTS `compitem` (`item` INT NOT NULL, `item2` INT NOT NULL, `qtde` FLOAT, PRIMARY KEY (`item2`,`item`))",
-                "CREATE TABLE IF NOT EXISTS `config` (`codigo` SMALLINT NOT NULL, ... PRIMARY KEY (`codigo`))",
+                "CREATE TABLE IF NOT EXISTS `config` (
+                  `codigo` SMALLINT NOT NULL,
+                  `ECFpadrao` SMALLINT NULL DEFAULT NULL,
+                  `promocao` VARCHAR(1) NULL DEFAULT NULL,
+                  `hsini` VARCHAR(5) NULL DEFAULT NULL,
+                  `hsfin` VARCHAR(5) NULL DEFAULT NULL,
+                  `diaini` TINYINT UNSIGNED NULL DEFAULT NULL,
+                  `diafin` TINYINT UNSIGNED NULL DEFAULT NULL,
+                  `tpimpR` TINYINT UNSIGNED NULL DEFAULT NULL,
+                  `espR` TINYINT UNSIGNED NULL DEFAULT NULL,
+                  `tpimpC` TINYINT UNSIGNED NULL DEFAULT NULL,
+                  `espC` TINYINT UNSIGNED NULL DEFAULT NULL,
+                  `tpimpB` TINYINT UNSIGNED NULL DEFAULT NULL,
+                  `espB` TINYINT UNSIGNED NULL DEFAULT NULL,
+                  `tpimpRel` TINYINT UNSIGNED NULL DEFAULT NULL,
+                  `espRel` TINYINT UNSIGNED NULL DEFAULT NULL,
+                  `taradic` VARCHAR(1) NULL DEFAULT NULL,
+                  `qtdehs` INT NULL DEFAULT NULL,
+                  `perini` DATETIME NULL DEFAULT NULL,
+                  `perfin` DATETIME NULL DEFAULT NULL,
+                  `percas` FLOAT NULL DEFAULT NULL,
+                  `totper` DATETIME NULL DEFAULT NULL,
+                  `turno1` TINYINT(1) NULL DEFAULT NULL,
+                  `hiturno1` DATETIME NULL DEFAULT NULL,
+                  `hfturno1` DATETIME NULL DEFAULT NULL,
+                  `turno2` TINYINT(1) NULL DEFAULT NULL,
+                  `hiturno2` DATETIME NULL DEFAULT NULL,
+                  `hfturno2` DATETIME NULL DEFAULT NULL,
+                  `turno3` TINYINT(1) NULL DEFAULT NULL,
+                  `hiturno3` DATETIME NULL DEFAULT NULL,
+                  `hfturno3` DATETIME NULL DEFAULT NULL,
+                  `turno4` TINYINT(1) NULL DEFAULT NULL,
+                  `hiturno4` DATETIME NULL DEFAULT NULL,
+                  `hfturno4` DATETIME NULL DEFAULT NULL,
+                  `diainiper` INT NULL DEFAULT NULL,
+                  `diafimper` INT NULL DEFAULT NULL,
+                  `mudatabela` DATETIME NULL DEFAULT NULL,
+                  `mudatabelaper` DATETIME NULL DEFAULT NULL,
+                  `pernoitefs` TINYINT(1) NULL DEFAULT NULL,
+                  `perinifs` DATETIME NULL DEFAULT NULL,
+                  `perfinfs` DATETIME NULL DEFAULT NULL,
+                  `totperfs` DATETIME NULL DEFAULT NULL,
+                  `implocalremoto` TINYINT(1) NULL DEFAULT NULL,
+                  `nivelbaixopdv` TINYINT(1) NULL DEFAULT NULL,
+                  `nivelbaixoECF` TINYINT(1) NULL DEFAULT NULL,
+                  `ecfrestaurante` TINYINT(1) NULL DEFAULT NULL,
+                  `integraadm` TINYINT(1) NULL DEFAULT NULL,
+                  `caminhoadm` VARCHAR(150) NULL DEFAULT NULL,
+                  `nivelbaixoEstorno` TINYINT(1) NULL DEFAULT NULL,
+                  `PPA` TINYINT(1) NULL DEFAULT NULL,
+                  `estoqueseparado` TINYINT(1) NULL DEFAULT NULL,
+                  `ToleranciaE` DATETIME NULL DEFAULT NULL,
+                  `TEF` TINYINT(1) NULL DEFAULT NULL,
+                  `lencois` INT NULL DEFAULT NULL,
+                  `toalhas` INT NULL DEFAULT NULL,
+                  `QtdeLencois` FLOAT NULL DEFAULT NULL,
+                  `QtdeToalhas` FLOAT NULL DEFAULT NULL,
+                  `imprimeliberacao` TINYINT(1) NULL DEFAULT NULL,
+                  `ControlaLimpeza` TINYINT(1) NULL DEFAULT NULL,
+                  `TempoCtrlLimpeza` INT NULL DEFAULT NULL,
+                  `IgnorarSuja` TINYINT(1) NULL DEFAULT NULL,
+                  `versaoenergia` INT NULL DEFAULT NULL,
+                  `SituacaoGaragem` TINYINT(1) NULL DEFAULT NULL,
+                  `ReservaSuite` TINYINT(1) NULL DEFAULT NULL,
+                  `TempoRecebimento` DATETIME NULL DEFAULT NULL,
+                  `VarreduraPlaca` TINYINT(1) NULL DEFAULT NULL,
+                  `VarreduraCamareira` TINYINT(1) NULL DEFAULT NULL,
+                  `ReaberturaConta` TINYINT(1) NULL DEFAULT NULL,
+                  `EstornoLocacao` TINYINT(1) NULL DEFAULT NULL,
+                  `nivelbaixoImpPDV` TINYINT(1) NULL DEFAULT NULL,
+                  `DescontoEntrada` TINYINT(1) NULL DEFAULT NULL,
+                  `BloqueaConferencia` TINYINT(1) NULL DEFAULT NULL,
+                  `PernoiteFixa` TINYINT(1) NULL DEFAULT NULL,
+                  `TempoPernoiteFixa` DATETIME NULL DEFAULT NULL,
+                  `RecPenhora` TINYINT(1) NULL DEFAULT NULL,
+                  `OutrasTaxas` TINYINT(1) NULL DEFAULT NULL,
+                  `Transferencia` TINYINT(1) NULL DEFAULT NULL,
+                  `ReaberturaAutomatica` TINYINT(1) NULL DEFAULT NULL,
+                  `AgregaPernoite` TINYINT(1) NULL DEFAULT NULL,
+                  `DescontoRapido` TINYINT(1) NULL DEFAULT NULL,
+                  `ModeloPDV` INT NULL DEFAULT NULL,
+                  `AgregaPSlocacao` TINYINT(1) NULL DEFAULT NULL,
+                  `descontotempo` TINYINT(1) NULL DEFAULT NULL,
+                  `DescontoMax` FLOAT NULL DEFAULT NULL,
+                  `Diarias` TINYINT(1) NULL DEFAULT NULL,
+                  `HoraDiaria` INT NULL DEFAULT NULL,
+                  `ImprimeCanhoto` TINYINT(1) NULL DEFAULT NULL,
+                  `TurnoCXFixo` TINYINT(1) NULL DEFAULT NULL,
+                  `AdCasalDif` TINYINT(1) NULL DEFAULT NULL,
+                  `PerCasF` FLOAT NULL DEFAULT NULL,
+                  `indiceISS` INT NULL DEFAULT NULL,
+                  `VersaoGCIS` INT NULL DEFAULT NULL,
+                  `PadraoEpson` TINYINT(1) NULL DEFAULT NULL,
+                  `AvaliacaoTarifacao` VARCHAR(1) NULL DEFAULT NULL,
+                  `ToleranciaIni` DATETIME NULL DEFAULT NULL,
+                  `impresumosimp` TINYINT(1) NULL DEFAULT NULL,
+                  `impresumofechamento` TINYINT(1) NULL DEFAULT NULL,
+                  `ctrl1` TINYINT(1) NULL DEFAULT NULL,
+                  `ctrl1_1` INT NULL DEFAULT NULL,
+                  `ctrl1_2` INT NULL DEFAULT NULL,
+                  `CtrlFuncRec` TINYINT(1) NULL DEFAULT NULL,
+                  `TipoFinalSemana` INT NULL DEFAULT NULL,
+                  `MostrarEntrada` TINYINT(1) NULL DEFAULT NULL,
+                  `QtdeEject` INT NULL DEFAULT NULL,
+                  `Guilhotina` TINYINT(1) NULL DEFAULT NULL,
+                  `CtrlTempoPatio` TINYINT(1) NULL DEFAULT NULL,
+                  `PerIni2` DATETIME NULL DEFAULT NULL,
+                  `PerFin2` DATETIME NULL DEFAULT NULL,
+                  `PerIniFS2` DATETIME NULL DEFAULT NULL,
+                  `PerFinFS2` DATETIME NULL DEFAULT NULL,
+                  `ImpEstorno` TINYINT(1) NULL DEFAULT NULL,
+                  `MensGaragem` VARCHAR(30) NULL DEFAULT NULL,
+                  `impEnd2v` TINYINT(1) NULL DEFAULT NULL,
+                  `ConfImpRec` TINYINT(1) NULL DEFAULT NULL,
+                  `StsRevLimpezaSup` TINYINT(1) NULL DEFAULT NULL,
+                  `SupNrRec` TINYINT(1) NULL DEFAULT NULL,
+                  `RecebimentoUnico` TINYINT(1) NULL DEFAULT NULL,
+                  `caixaunificado` TINYINT(1) NULL DEFAULT NULL,
+                  `TempoCtrlLimpezaRev` INT NULL DEFAULT NULL,
+                  `ControlaLimpezaRev` TINYINT(1) NULL DEFAULT NULL,
+                  `SamosAPL` TINYINT(1) NULL DEFAULT NULL,
+                  `SamosAplURL` VARCHAR(255) NULL DEFAULT NULL,
+                  PRIMARY KEY (`codigo`)
+                );
+                ",
                 "CREATE TABLE IF NOT EXISTS `ConfigVip` (`Cod` INT NOT NULL, `Descricao` VARCHAR(30), `Tipo` VARCHAR(1), `QtdeOcu` INT, `Percentual` FLOAT, `expiracao` INT, `saqueparcial` TINYINT(1), `fechamento` VARCHAR(1), PRIMARY KEY (`Cod`))",
                 "CREATE TABLE IF NOT EXISTS `ConfigVip2` (`Cod2` INT NOT NULL, `TabelaP` INT NOT NULL, `Percentual` FLOAT, PRIMARY KEY (`TabelaP`,`Cod2`))",
                 "CREATE TABLE IF NOT EXISTS `consumos` (`numero` INT NOT NULL, `item` SMALLINT NOT NULL, `hora` VARCHAR(5) NOT NULL, `descricao` VARCHAR(255), `tipo` VARCHAR(1), `qtde` FLOAT, `valor` FLOAT, `total` FLOAT, `impresso` TINYINT(1), `DataBaixa` DATETIME, `servico` TINYINT(1), `TaxaServicos` FLOAT, `ctrlpedido` INT, `HoraImp` DATETIME, PRIMARY KEY (`hora`,`item`,`numero`))",
@@ -148,7 +277,15 @@ Public Class clsGeScriptBanco
                 "CREATE TABLE IF NOT EXISTS `TipoDespesas` (`Codigo` INT NOT NULL, `Descricao` VARCHAR(50), PRIMARY KEY (`Codigo`))",
                 "CREATE TABLE IF NOT EXISTS `usuarios` (`codigo` SMALLINT NOT NULL, `nome` VARCHAR(30), `senha` VARCHAR(20), `nivel` SMALLINT, `Supervisor` TINYINT(1), `inativo` TINYINT(1), PRIMARY KEY (`codigo`))",
                 "CREATE TABLE IF NOT EXISTS `VerifCtrl` (`idguia` INT NOT NULL, `suite` VARCHAR(40), PRIMARY KEY (`idguia`))",
-                "CREATE TABLE IF NOT EXISTS `Versao` (`Codigo` INT NOT NULL,`NrVersao` VARCHAR(5),`dataV` DATETIME, PRIMARY KEY (`Codigo`));"
+                "CREATE TABLE IF NOT EXISTS `Versao` (`Codigo` INT NOT NULL,`NrVersao` VARCHAR(5),`dataV` DATETIME, PRIMARY KEY (`Codigo`));",
+                "CREATE TABLE IF NOT EXISTS Sigla (
+                    codigo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                    sigla VARCHAR(10) UNIQUE,
+                    txadd DECIMAL(10,2),
+                    qtdpessoa INT,
+                    bloqueiavi BOOLEAN,
+                    emissao BOOLEAN
+                );"
             }
         End Get
     End Property

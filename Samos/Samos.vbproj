@@ -163,6 +163,7 @@
     <Compile Include="Classes CRUD\crEspecie.vb" />
     <Compile Include="Classes CRUD\crSaldoItens.vb" />
     <Compile Include="Classes CRUD\crSaldoItens2.vb" />
+    <Compile Include="Classes CRUD\crSigla.vb" />
     <Compile Include="Classes CRUD\crUsuario.vb" />
     <Compile Include="Classes CRUD\TabelaBase.vb" />
     <Compile Include="Classes CRUD\crProdutos.vb" />

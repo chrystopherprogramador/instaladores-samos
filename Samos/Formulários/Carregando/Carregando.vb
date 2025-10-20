@@ -60,6 +60,13 @@ Public Class Carregando
                 Dim myForm As New ConfBanco
                 myForm.ShowDialog()
                 Me.Close()
+            Else
+                Dim script As New clsGeScriptBanco(clsGeVariaveis._ipServidor,
+                                                    clsGeVariaveis._nomeBanco,
+                                                        clsGeVariaveis._usuarioBanco,
+                                                            clsGeVariaveis._senhaBanco,
+                                                                clsGeVariaveis._portaBanco)
+                script.executaScript(False)
             End If
 
 
@@ -75,6 +82,9 @@ Public Class Carregando
                     End Using
                 End Using
             End Using
+
+            clsGeVariaveis.ConfMenu = ini.ReadValue("CONFIG", "MENU", 0)
+
 
             ' Etapa 5: Finalização
             carregaSistema.ReportProgress(100)

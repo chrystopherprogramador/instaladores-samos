@@ -116,10 +116,12 @@ Partial Class MDI
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
         Me.PernoiteDiferenciadaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TarifaçãoDiferenciadaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LicençaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SobreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SairToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripComboBox1 = New System.Windows.Forms.ToolStripComboBox()
+        Me.ToolTipCmdMenu = New System.Windows.Forms.ToolStripComboBox()
         Me.LateralEsquerdaLateralEsquerda = New System.Windows.Forms.Panel()
+        Me.lblUsuario = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -140,8 +142,6 @@ Partial Class MDI
         Me.disL = New System.Windows.Forms.Label()
         Me.disD = New System.Windows.Forms.Label()
         Me.pnSuite = New System.Windows.Forms.FlowLayoutPanel()
-        Me.LicençaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.lblUsuario = New System.Windows.Forms.Label()
         Me.Menu.SuspendLayout()
         Me.LateralEsquerdaLateralEsquerda.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -151,7 +151,7 @@ Partial Class MDI
         'Menu
         '
         Me.Menu.BackColor = System.Drawing.Color.White
-        Me.Menu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DadosBásicosToolStripMenuItem, Me.RelatóriosToolStripMenuItem, Me.ConsultasToolStripMenuItem, Me.CaixaToolStripMenuItem, Me.ReservasToolStripMenuItem, Me.TrocaDeUsuáriosToolStripMenuItem, Me.SobreToolStripMenuItem, Me.SairToolStripMenuItem, Me.ToolStripComboBox1})
+        Me.Menu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DadosBásicosToolStripMenuItem, Me.RelatóriosToolStripMenuItem, Me.ConsultasToolStripMenuItem, Me.CaixaToolStripMenuItem, Me.ReservasToolStripMenuItem, Me.TrocaDeUsuáriosToolStripMenuItem, Me.SobreToolStripMenuItem, Me.SairToolStripMenuItem, Me.ToolTipCmdMenu})
         Me.Menu.Location = New System.Drawing.Point(0, 0)
         Me.Menu.Name = "Menu"
         Me.Menu.Size = New System.Drawing.Size(1264, 27)
@@ -723,6 +723,12 @@ Partial Class MDI
         Me.TarifaçãoDiferenciadaToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.TarifaçãoDiferenciadaToolStripMenuItem.Text = "Tarifação diferenciada"
         '
+        'LicençaToolStripMenuItem
+        '
+        Me.LicençaToolStripMenuItem.Name = "LicençaToolStripMenuItem"
+        Me.LicençaToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.LicençaToolStripMenuItem.Text = "Licença"
+        '
         'SobreToolStripMenuItem
         '
         Me.SobreToolStripMenuItem.Name = "SobreToolStripMenuItem"
@@ -735,12 +741,12 @@ Partial Class MDI
         Me.SairToolStripMenuItem.Size = New System.Drawing.Size(38, 23)
         Me.SairToolStripMenuItem.Text = "Sair"
         '
-        'ToolStripComboBox1
+        'ToolTipCmdMenu
         '
-        Me.ToolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ToolStripComboBox1.Items.AddRange(New Object() {"Menu: Kambam", "Menu: Padrão"})
-        Me.ToolStripComboBox1.Name = "ToolStripComboBox1"
-        Me.ToolStripComboBox1.Size = New System.Drawing.Size(121, 23)
+        Me.ToolTipCmdMenu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ToolTipCmdMenu.Items.AddRange(New Object() {"Menu: Kambam", "Menu: Padrão"})
+        Me.ToolTipCmdMenu.Name = "ToolTipCmdMenu"
+        Me.ToolTipCmdMenu.Size = New System.Drawing.Size(121, 23)
         '
         'LateralEsquerdaLateralEsquerda
         '
@@ -761,6 +767,17 @@ Partial Class MDI
         Me.LateralEsquerdaLateralEsquerda.Name = "LateralEsquerdaLateralEsquerda"
         Me.LateralEsquerdaLateralEsquerda.Size = New System.Drawing.Size(1264, 112)
         Me.LateralEsquerdaLateralEsquerda.TabIndex = 47
+        '
+        'lblUsuario
+        '
+        Me.lblUsuario.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblUsuario.Location = New System.Drawing.Point(357, 6)
+        Me.lblUsuario.Name = "lblUsuario"
+        Me.lblUsuario.Size = New System.Drawing.Size(337, 20)
+        Me.lblUsuario.TabIndex = 50
+        Me.lblUsuario.Text = "Samos"
+        Me.lblUsuario.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         '
         'Button1
         '
@@ -1009,23 +1026,6 @@ Partial Class MDI
         Me.pnSuite.Size = New System.Drawing.Size(1205, 537)
         Me.pnSuite.TabIndex = 56
         '
-        'LicençaToolStripMenuItem
-        '
-        Me.LicençaToolStripMenuItem.Name = "LicençaToolStripMenuItem"
-        Me.LicençaToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
-        Me.LicençaToolStripMenuItem.Text = "Licença"
-        '
-        'lblUsuario
-        '
-        Me.lblUsuario.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblUsuario.Location = New System.Drawing.Point(357, 6)
-        Me.lblUsuario.Name = "lblUsuario"
-        Me.lblUsuario.Size = New System.Drawing.Size(337, 20)
-        Me.lblUsuario.TabIndex = 50
-        Me.lblUsuario.Text = "Samos"
-        Me.lblUsuario.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        '
         'MDI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1169,7 +1169,7 @@ Partial Class MDI
     Friend WithEvents disX As Label
     Friend WithEvents disM As Label
     Friend WithEvents pnSuite As FlowLayoutPanel
-    Friend WithEvents ToolStripComboBox1 As ToolStripComboBox
+    Friend WithEvents ToolTipCmdMenu As ToolStripComboBox
     Friend WithEvents LicençaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents lblUsuario As Label
 End Class

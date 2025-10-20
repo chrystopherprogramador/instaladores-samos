@@ -137,11 +137,27 @@ Public Class clsGeCarregaSuite
 
             _panel.Controls.Clear()
 
-            Dim colunas As Integer = 5
-            Dim espacoEntre As Integer = 10
+            Dim colunas As Integer
+
+            Dim linhas As Integer
+
+            If dtSuites.Rows.Count > 54 Then
+                colunas = 10
+                linhas = Math.Ceiling(dtSuites.Rows.Count / colunas)
+            ElseIf dtSuites.Rows.Count > 40 Then
+                colunas = 9
+                linhas = 6
+            ElseIf dtSuites.Rows.Count > 24 Then
+                colunas = 8
+                linhas = 5
+            Else
+                colunas = 6
+                linhas = 4
+            End If
+            Dim espacoEntre As Integer = 20
             Dim larguraBotao As Integer = (_panel.Width \ colunas) - espacoEntre
             Dim alturaBotaoMinima As Integer = 100
-            Dim linhas As Integer = Math.Ceiling(dtSuites.Rows.Count / colunas)
+
             Dim alturaBotaoCalculada As Integer = (_panel.Height \ linhas) - espacoEntre
             Dim alturaBotaoFinal As Integer = Math.Max(alturaBotaoCalculada, alturaBotaoMinima)
 
@@ -203,11 +219,14 @@ Public Class clsGeCarregaSuite
     End Sub
 
     Private Function CreateSuiteButtonSimple(numero As Integer, sigla As String, situacao As String, largura As Integer, altura As Integer) As Button
+
+        Dim tamFonte As Integer = largura / 6
+
         Dim btn As New Button()
         btn.Tag = numero
         btn.Width = largura
         btn.Height = altura
-        btn.Font = New Font("Segoe UI", 12, FontStyle.Bold)
+        btn.Font = New Font("Segoe UI", tamFonte, FontStyle.Bold)
         btn.FlatStyle = FlatStyle.Flat
         btn.FlatAppearance.BorderSize = 0
         Dim coresDict = CarregaCoresDoBanco()
@@ -216,7 +235,7 @@ Public Class clsGeCarregaSuite
         btn.ForeColor = cores.Item2
 
         ' Texto principal (número da suíte)
-        btn.Text = $"Suíte {numero}"
+        btn.Text = $"{numero}"
 
         ' Label da sigla no canto superior
         Dim lblSigla As New Label() With {
@@ -371,6 +390,8 @@ Public Class clsGeCarregaSuite
             Distinct().
             OrderBy(Function(s) s).ToList()
 
+            Dim X As Integer = 1
+
             For Each sigla In siglas
                 Dim suitesDaSigla = dtSuites.Select($"sigla = '{sigla}'" & If(filtroSituacao <> "", $" AND situacao = '{filtroSituacao}'", ""))
                 Dim total = suitesDaSigla.Length
@@ -400,8 +421,8 @@ Public Class clsGeCarregaSuite
                 Dim titulo As New Label() With {
                 .Text = $"{sigla} ({disponiveis}/{total})",
                 .Font = New Font("Segoe UI", 10, FontStyle.Regular),
-                .ForeColor = Color.DimGray,
-                .BackColor = Color.WhiteSmoke,
+                .ForeColor = Color.White,
+                .BackColor = Color.DarkBlue,
                 .TextAlign = ContentAlignment.MiddleCenter,
                 .Dock = DockStyle.Top,
                 .Height = 28,
@@ -435,7 +456,7 @@ Public Class clsGeCarregaSuite
                         Dim row = suitesDaSigla(index)
                         Dim numero = Convert.ToInt32(row("numero"))
                         Dim situacao = row("situacao").ToString()
-                        Dim btn = CreateSuiteButton(numero, situacao, coresDict, larguraBotao, alturaBotao, ModoLayoutSuite.Kanban)
+                        Dim btn = CreateSuiteButton(numero, situacao, coresDict, larguraBotao, alturaBotao, j)
                         btn.Margin = New Padding(6)
                         Dim situacaoDesc As String = String.Empty
 
@@ -481,22 +502,26 @@ Public Class clsGeCarregaSuite
     End Sub
 
 
-    Private Function CreateSuiteButton(numero As Integer, situacao As String, coresDict As Dictionary(Of String, Tuple(Of Color, Color)), largura As Integer, altura As Integer, modo As ModoLayoutSuite) As Button
+    Private Function CreateSuiteButton(numero As Integer, situacao As String, coresDict As Dictionary(Of String, Tuple(Of Color, Color)), largura As Integer, altura As Integer, linhaIndex As Integer) As Button
         Dim btn As New Button()
         btn.Tag = numero
         btn.Width = largura
         btn.Height = altura
-        btn.Font = New Font("Segoe UI", 9, FontStyle.Bold)
+        btn.Font = New Font("Segoe UI", 12, FontStyle.Bold)
         btn.FlatStyle = FlatStyle.Flat
         btn.FlatAppearance.BorderSize = 0
-
+        If linhaIndex = 0 Then
+            btn.Margin = New Padding(0, 20, 0, 6)
+        Else
+            btn.Margin = New Padding(0, 6, 0, 6)
+        End If
         Dim cores = coresDict(situacao)
         btn.BackColor = cores.Item1
         btn.ForeColor = cores.Item2
-        btn.Text = $"Suíte {numero}"
+        btn.Text = $"{numero}"
 
         ' Só adiciona label extra se for modo Kanban
-        If modo = ModoLayoutSuite.Kanban AndAlso (situacao = "M" OrElse situacao = "X") Then
+        If situacao = "M" OrElse situacao = "X" Then
             Dim lblStatusExtra As New Label() With {
             .Text = If(situacao = "M", "Manutenção", "Reservada"),
             .Font = New Font("Segoe UI", 8, FontStyle.Bold),

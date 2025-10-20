@@ -23,6 +23,7 @@
     'Configurações
 
     Public Shared EstoqueSeparado As Boolean = False
+    Public Shared ConfMenu As Integer = 1
 
 
 End Class

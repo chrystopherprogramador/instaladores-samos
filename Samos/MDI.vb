@@ -47,7 +47,7 @@ Public Class MDI
         Dim config As New clsGeForm(Me, True, True, True)
         config.ConfiguraMe()
 
-        ToolStripComboBox1.SelectedIndex = 0
+        ToolTipCmdMenu.SelectedIndex = 0
 
 
         clsSuite = New clsGeCarregaSuite(pnSuite, Me)
@@ -58,10 +58,13 @@ Public Class MDI
         timerHora.Interval = 1000
         timerHora.Start()
 
-        clsSuite.ConstrutorPainel()
+
 
         AtualizaLabelsDeSituacao()
 
+        clsSuite.ConstrutorPainel()
+
+        ToolTipCmdMenu.SelectedIndex = clsGeVariaveis.ConfMenu
 
     End Sub
 
@@ -72,7 +75,7 @@ Public Class MDI
     Private Sub atualizaTimer_Tick(sender As Object, e As EventArgs) Handles atualizaTimer.Tick
         Dim modoSelecionado As ModoLayoutSuite
 
-        Select Case ToolStripComboBox1.SelectedIndex
+        Select Case ToolTipCmdMenu.SelectedIndex
             Case 0
                 modoSelecionado = ModoLayoutSuite.Kanban
             Case 1
@@ -171,10 +174,13 @@ Public Class MDI
 
 
 
-    Private Sub ToolStripComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ToolStripComboBox1.SelectedIndexChanged
+    Private Sub ToolStripComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ToolTipCmdMenu.SelectedIndexChanged
+
+        Dim Ini As New IniReader(Application.StartupPath & "\AdmMotel.ini")
+
         Dim modoSelecionado As ModoLayoutSuite
 
-        Select Case ToolStripComboBox1.SelectedIndex
+        Select Case ToolTipCmdMenu.SelectedIndex
             Case 0
                 modoSelecionado = ModoLayoutSuite.Kanban
             Case 1
@@ -183,9 +189,13 @@ Public Class MDI
                 Exit Sub
         End Select
 
+        Ini.WriteValue("CONFIG", "MENU", ToolTipCmdMenu.SelectedIndex)
+
         clsSuite = New clsGeCarregaSuite(pnSuite, Me)
         clsSuite.CarregaSuite(modoSelecionado)
         clsSuite.AtualizaSuite(modoSelecionado)
+        clsSuite.ConstrutorPainel()
+
     End Sub
 
     Private Sub InformaTarifaçãoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InformaTarifaçãoToolStripMenuItem.Click
@@ -233,5 +243,9 @@ Public Class MDI
     Private Sub LicençaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LicençaToolStripMenuItem.Click
         Dim myForm As New Licenca
         myForm.ShowDialog()
+    End Sub
+
+    Private Sub ToolTipCmdMenu_Click(sender As Object, e As EventArgs) Handles ToolTipCmdMenu.Click
+
     End Sub
 End Class

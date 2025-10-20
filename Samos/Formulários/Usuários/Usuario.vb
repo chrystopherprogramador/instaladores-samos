@@ -109,7 +109,9 @@
                 .nivel = CLng(txtNivel.Text)
                 .supervisor = chSup.Checked
                 .inativo = chInativo.Checked
-                .senha = clsGeGeneral.CripSenhaUsuario("1")
+                If MsgBox("Deseja reiniciar a senha do usuário", vbQuestion + vbYesNo) = MsgBoxResult.Yes Then
+                    .senha = clsGeGeneral.CripSenhaUsuario("1")
+                End If
                 If CodigoAtual = 0 Then
                     err = .Executar(TabelaBase.Operacao.INSERT)
                 Else
