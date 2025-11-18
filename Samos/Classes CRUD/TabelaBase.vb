@@ -30,17 +30,32 @@ Public MustInherit Class TabelaBase
     Private Sub Inserir()
         Using conn As New MySqlConnection(clsGeVariaveis._strPathBanco)
             conn.Open()
-            Dim campos = ObterCampos()
-            Dim nomes = String.Join(",", campos.Keys)
-            Dim parametros = String.Join(",", campos.Keys.Select(Function(k) "@" & k))
+
+            ' Obtém todos os campos da classe
+            Dim todosCampos = ObterCampos()
+
+            ' Filtra apenas os campos com valor útil
+            Dim camposValidos = todosCampos.Where(Function(kvp)
+                                                      Dim valor = kvp.Value
+                                                      If valor Is Nothing Then Return False
+                                                      If TypeOf valor Is String AndAlso String.IsNullOrWhiteSpace(valor.ToString()) Then Return False
+                                                      Return True
+                                                  End Function).ToDictionary(Function(kvp) kvp.Key, Function(kvp) kvp.Value)
+
+            ' Monta a query com os campos válidos
+            Dim nomes = String.Join(",", camposValidos.Keys)
+            Dim parametros = String.Join(",", camposValidos.Keys.Select(Function(k) "@" & k))
             Dim sql = $"INSERT INTO {NomeTabela} ({nomes}) VALUES ({parametros})"
+
             Dim cmd As New MySqlCommand(sql, conn)
-            For Each kvp In campos
+            For Each kvp In camposValidos
                 cmd.Parameters.AddWithValue("@" & kvp.Key, kvp.Value)
             Next
+
             cmd.ExecuteNonQuery()
         End Using
     End Sub
+
 
     Private Sub Alterar()
         Using conn As New MySqlConnection(clsGeVariaveis._strPathBanco)

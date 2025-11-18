@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\OpenCvSharp4.runtime.win.4.11.0.20250507\build\net48\OpenCvSharp4.runtime.win.props" Condition="Exists('..\packages\OpenCvSharp4.runtime.win.4.11.0.20250507\build\net48\OpenCvSharp4.runtime.win.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +15,9 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,7 +54,24 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.2.2.5\lib\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Video.2.2.5\lib\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>..\packages\BouncyCastle.Cryptography.2.6.2\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
@@ -96,6 +117,9 @@
     <Reference Include="MySql.Data, Version=9.4.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.9.4.0\lib\net48\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.11.0.20250507\lib\net48\OpenCvSharp.dll</HintPath>
+    </Reference>
     <Reference Include="RBush, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c77e27b81f4d0187, processorArchitecture=MSIL">
       <HintPath>..\packages\RBush.Signed.4.0.0\lib\net47\RBush.dll</HintPath>
     </Reference>
@@ -106,6 +130,7 @@
     <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.ConfigurationManager, Version=9.0.0.9, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Configuration.ConfigurationManager.9.0.9\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
@@ -116,6 +141,11 @@
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.9.0.9\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Primitives.4.3.0\lib\net45\System.Drawing.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.IO.Pipelines, Version=9.0.0.9, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Pipelines.9.0.9\lib\net462\System.IO.Pipelines.dll</HintPath>
     </Reference>
@@ -127,20 +157,44 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.9.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.9.0.0\lib\net462\System.Text.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.3\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="Tesseract, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tesseract.5.2.0\lib\net48\Tesseract.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
+    <Reference Include="ZedGraph, Version=5.1.7.430, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZedGraph.5.1.7\lib\net35-Client\ZedGraph.dll</HintPath>
+    </Reference>
     <Reference Include="ZstdSharp, Version=0.8.6.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
       <HintPath>..\packages\ZstdSharp.Port.0.8.6\lib\net462\ZstdSharp.dll</HintPath>
     </Reference>
@@ -160,7 +214,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes CRUD\crAreaServico.vb" />
+    <Compile Include="Classes CRUD\crOperadoras.vb" />
     <Compile Include="Classes CRUD\crEspecie.vb" />
+    <Compile Include="Classes CRUD\crHistMovto.vb" />
     <Compile Include="Classes CRUD\crSaldoItens.vb" />
     <Compile Include="Classes CRUD\crSaldoItens2.vb" />
     <Compile Include="Classes CRUD\crSigla.vb" />
@@ -222,6 +278,18 @@
     <Compile Include="Formulários\Espécie de Mercadorias\EspecieSelecao.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formulários\Historico Mvtos\HistMov.Designer.vb">
+      <DependentUpon>HistMov.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Historico Mvtos\HistMov.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\Historico Mvtos\HistMovtSelecao.Designer.vb">
+      <DependentUpon>HistMovtSelecao.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Historico Mvtos\HistMovtSelecao.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formulários\Informa Tarifação\InformaTarifacao.Designer.vb">
       <DependentUpon>InformaTarifacao.vb</DependentUpon>
     </Compile>
@@ -232,6 +300,24 @@
       <DependentUpon>Licenca.vb</DependentUpon>
     </Compile>
     <Compile Include="Formulários\Licença\Licenca.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\Ocupação\Ocupação.Designer.vb">
+      <DependentUpon>Ocupação.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Ocupação\Ocupação.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\Operadoras\Operadoras.Designer.vb">
+      <DependentUpon>Operadoras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Operadoras\Operadoras.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\Operadoras\OperadorasSelecao.Designer.vb">
+      <DependentUpon>OperadorasSelecao.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Operadoras\OperadorasSelecao.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulários\Produtos\Produtos.Designer.vb">
@@ -250,6 +336,18 @@
       <DependentUpon>RelatorioGenerico.vb</DependentUpon>
     </Compile>
     <Compile Include="Formulários\Relatório Genérico\RelatorioGenerico.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\Siglas\Sigla.Designer.vb">
+      <DependentUpon>Sigla.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Siglas\Sigla.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\Siglas\SiglaSelecao.Designer.vb">
+      <DependentUpon>SiglaSelecao.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Siglas\SiglaSelecao.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulários\Usuários\Usuario.Designer.vb">
@@ -273,6 +371,7 @@
     </Compile>
     <Compile Include="Modulos\mdlInst.vb" />
     <Compile Include="Modulos\ModLicenca.vb" />
+    <Compile Include="Modulos\OCRPlaca.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -315,11 +414,26 @@
     <EmbeddedResource Include="Formulários\Espécie de Mercadorias\EspecieSelecao.resx">
       <DependentUpon>EspecieSelecao.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Historico Mvtos\HistMov.resx">
+      <DependentUpon>HistMov.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Historico Mvtos\HistMovtSelecao.resx">
+      <DependentUpon>HistMovtSelecao.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Informa Tarifação\InformaTarifacao.resx">
       <DependentUpon>InformaTarifacao.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Licença\Licenca.resx">
       <DependentUpon>Licenca.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Ocupação\Ocupação.resx">
+      <DependentUpon>Ocupação.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Operadoras\Operadoras.resx">
+      <DependentUpon>Operadoras.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Operadoras\OperadorasSelecao.resx">
+      <DependentUpon>OperadorasSelecao.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Produtos\Produtos.resx">
       <DependentUpon>Produtos.vb</DependentUpon>
@@ -329,6 +443,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Relatório Genérico\RelatorioGenerico.resx">
       <DependentUpon>RelatorioGenerico.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Siglas\Sigla.resx">
+      <DependentUpon>Sigla.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Siglas\SiglaSelecao.resx">
+      <DependentUpon>SiglaSelecao.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Usuários\Usuario.resx">
       <DependentUpon>Usuario.vb</DependentUpon>
@@ -359,7 +479,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="License-LGPL.txt" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo_system.ico.bmp" />
   </ItemGroup>
@@ -384,5 +506,16 @@
   <ItemGroup>
     <None Include="Resources\sell_50dp_666666_FILL0_wght400_GRAD0_opsz48.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="..\packages\Tesseract.5.2.0\build\Tesseract.targets" Condition="Exists('..\packages\Tesseract.5.2.0\build\Tesseract.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Tesseract.5.2.0\build\Tesseract.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Tesseract.5.2.0\build\Tesseract.targets'))" />
+    <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
+    <Error Condition="!Exists('..\packages\OpenCvSharp4.runtime.win.4.11.0.20250507\build\net48\OpenCvSharp4.runtime.win.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenCvSharp4.runtime.win.4.11.0.20250507\build\net48\OpenCvSharp4.runtime.win.props'))" />
+  </Target>
+  <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
 </Project>

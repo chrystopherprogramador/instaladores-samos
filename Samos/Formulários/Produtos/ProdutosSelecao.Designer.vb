@@ -22,7 +22,6 @@ Partial Class ProdutosSelecao
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnPesquisar = New System.Windows.Forms.Button()
         Me.txtBusca = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GridProduto = New System.Windows.Forms.DataGridView()
@@ -33,15 +32,6 @@ Partial Class ProdutosSelecao
         Me.btnVincular = New System.Windows.Forms.Button()
         CType(Me.GridProduto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'btnPesquisar
-        '
-        Me.btnPesquisar.Location = New System.Drawing.Point(373, 10)
-        Me.btnPesquisar.Name = "btnPesquisar"
-        Me.btnPesquisar.Size = New System.Drawing.Size(95, 35)
-        Me.btnPesquisar.TabIndex = 16
-        Me.btnPesquisar.Text = "Pesquisar"
-        Me.btnPesquisar.UseVisualStyleBackColor = True
         '
         'txtBusca
         '
@@ -118,7 +108,6 @@ Partial Class ProdutosSelecao
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.btnVincular)
-        Me.Controls.Add(Me.btnPesquisar)
         Me.Controls.Add(Me.txtBusca)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GridProduto)
@@ -134,8 +123,6 @@ Partial Class ProdutosSelecao
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents btnPesquisar As Button
     Friend WithEvents txtBusca As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents GridProduto As DataGridView

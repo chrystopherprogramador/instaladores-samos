@@ -22,9 +22,6 @@ Partial Class UsuariosSelecao
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnPesquisar = New System.Windows.Forms.Button()
-        Me.txtBusca = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.GridUsuarios = New System.Windows.Forms.DataGridView()
         Me.btnImprimir = New System.Windows.Forms.Button()
         Me.btnExcluir = New System.Windows.Forms.Button()
@@ -33,37 +30,12 @@ Partial Class UsuariosSelecao
         CType(Me.GridUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'btnPesquisar
-        '
-        Me.btnPesquisar.Location = New System.Drawing.Point(373, 5)
-        Me.btnPesquisar.Name = "btnPesquisar"
-        Me.btnPesquisar.Size = New System.Drawing.Size(95, 35)
-        Me.btnPesquisar.TabIndex = 16
-        Me.btnPesquisar.Text = "Pesquisar"
-        Me.btnPesquisar.UseVisualStyleBackColor = True
-        '
-        'txtBusca
-        '
-        Me.txtBusca.Location = New System.Drawing.Point(75, 13)
-        Me.txtBusca.Name = "txtBusca"
-        Me.txtBusca.Size = New System.Drawing.Size(292, 20)
-        Me.txtBusca.TabIndex = 15
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(14, 16)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(43, 13)
-        Me.Label1.TabIndex = 20
-        Me.Label1.Text = "Usuário"
-        '
         'GridUsuarios
         '
         Me.GridUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridUsuarios.Location = New System.Drawing.Point(12, 58)
+        Me.GridUsuarios.Location = New System.Drawing.Point(12, 12)
         Me.GridUsuarios.Name = "GridUsuarios"
-        Me.GridUsuarios.Size = New System.Drawing.Size(492, 198)
+        Me.GridUsuarios.Size = New System.Drawing.Size(492, 244)
         Me.GridUsuarios.TabIndex = 17
         '
         'btnImprimir
@@ -107,9 +79,6 @@ Partial Class UsuariosSelecao
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(517, 318)
-        Me.Controls.Add(Me.btnPesquisar)
-        Me.Controls.Add(Me.txtBusca)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GridUsuarios)
         Me.Controls.Add(Me.btnImprimir)
         Me.Controls.Add(Me.btnExcluir)
@@ -119,13 +88,8 @@ Partial Class UsuariosSelecao
         Me.Text = "Usuários"
         CType(Me.GridUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents btnPesquisar As Button
-    Friend WithEvents txtBusca As TextBox
-    Friend WithEvents Label1 As Label
     Friend WithEvents GridUsuarios As DataGridView
     Friend WithEvents btnImprimir As Button
     Friend WithEvents btnExcluir As Button

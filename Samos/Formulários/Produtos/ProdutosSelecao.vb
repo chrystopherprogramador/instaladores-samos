@@ -105,29 +105,7 @@ Public Class ProdutosSelecao
         End Try
     End Sub
 
-    Private Sub btnPesquisar_Click(sender As Object, e As EventArgs) Handles btnPesquisar.Click
-        Try
 
-
-            Dim filtro As String = txtBusca.Text.Trim().Replace("'", "''")
-
-            If DtProduto IsNot Nothing Then
-
-                Dim dtFiltrado As DataTable = DtProduto.Clone()
-
-                For Each row As DataRow In DtProduto.Select($"Descrição LIKE '%{filtro}%'")
-                    dtFiltrado.ImportRow(row)
-                Next
-
-                GridProduto.DataSource = dtFiltrado
-
-            End If
-
-
-        Catch ex As Exception
-            MsgBox("Erro ao filtrar os dados: " & ex.Message, MsgBoxStyle.Critical, "Atenção")
-        End Try
-    End Sub
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         Dim myForm As New RelatorioGenerico
@@ -201,5 +179,29 @@ Public Class ProdutosSelecao
             End Try
 
         End If
+    End Sub
+
+    Private Sub txtBusca_TextChanged(sender As Object, e As EventArgs) Handles txtBusca.TextChanged
+        Try
+
+
+            Dim filtro As String = txtBusca.Text.Trim().Replace("'", "''")
+
+            If DtProduto IsNot Nothing Then
+
+                Dim dtFiltrado As DataTable = DtProduto.Clone()
+
+                For Each row As DataRow In DtProduto.Select($"Descrição LIKE '%{filtro}%'")
+                    dtFiltrado.ImportRow(row)
+                Next
+
+                GridProduto.DataSource = dtFiltrado
+
+            End If
+
+
+        Catch ex As Exception
+            MsgBox("Erro ao filtrar os dados: " & ex.Message, MsgBoxStyle.Critical, "Atenção")
+        End Try
     End Sub
 End Class

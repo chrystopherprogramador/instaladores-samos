@@ -46,6 +46,9 @@ Public Class clsGeScriptBanco
                             End Using
                         End If
                     Catch ex As Exception
+                        If sql.ToUpper().Contains("DROP") Or sql.ToUpper().Contains("MODIFY") Then
+                            Continue For
+                        End If
                         MsgBox($"Erro ao executar script da tabela {comando}", vbInformation)
                     End Try
 
@@ -278,14 +281,24 @@ Public Class clsGeScriptBanco
                 "CREATE TABLE IF NOT EXISTS `usuarios` (`codigo` SMALLINT NOT NULL, `nome` VARCHAR(30), `senha` VARCHAR(20), `nivel` SMALLINT, `Supervisor` TINYINT(1), `inativo` TINYINT(1), PRIMARY KEY (`codigo`))",
                 "CREATE TABLE IF NOT EXISTS `VerifCtrl` (`idguia` INT NOT NULL, `suite` VARCHAR(40), PRIMARY KEY (`idguia`))",
                 "CREATE TABLE IF NOT EXISTS `Versao` (`Codigo` INT NOT NULL,`NrVersao` VARCHAR(5),`dataV` DATETIME, PRIMARY KEY (`Codigo`));",
-                "CREATE TABLE IF NOT EXISTS Sigla (
-                    codigo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                    sigla VARCHAR(10) UNIQUE,
-                    txadd DECIMAL(10,2),
-                    qtdpessoa INT,
-                    bloqueiavi BOOLEAN,
-                    emissao BOOLEAN
-                );"
+                "CREATE TABLE IF NOT EXISTS Sigla (codigo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,sigla VARCHAR(10) UNIQUE,txadd DECIMAL(10,2),qtdpessoa INT,bloqueiavi BOOLEAN,emissao BOOLEAN);",
+                "ALTER TABLE suites DROP COLUMN valor;",
+                "ALTER TABLE suites DROP COLUMN adicional;",
+                "ALTER TABLE suites DROP COLUMN tempo;",
+                "ALTER TABLE suites DROP COLUMN valorp;",
+                "ALTER TABLE suites DROP COLUMN adicionalp;",
+                "ALTER TABLE suites DROP COLUMN tempop;",
+                "ALTER TABLE suites DROP COLUMN tipo;",
+                "ALTER TABLE suites DROP COLUMN pernoite;",
+                "ALTER TABLE suites DROP COLUMN pernoitep;",
+                "ALTER TABLE suites DROP COLUMN bloqueiatc;",
+                "ALTER TABLE suites DROP COLUMN contrato;",
+                "ALTER TABLE suites DROP COLUMN qrcode;",
+                "ALTER TABLE movtosq MODIFY COLUMN entradahs TIME;",
+                "ALTER TABLE movtosq MODIFY COLUMN saidahs TIME;",
+                "ALTER TABLE movtosq MODIFY COLUMN tempo TIME;",
+                "ALTER TABLE movtosq MODIFY COLUMN entrada DATE;",
+                "ALTER TABLE movtosq MODIFY COLUMN saida DATE;"
             }
         End Get
     End Property

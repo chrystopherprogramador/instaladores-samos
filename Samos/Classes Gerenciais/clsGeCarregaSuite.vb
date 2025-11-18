@@ -93,31 +93,44 @@ Public Class clsGeCarregaSuite
         painelLateral.Controls.Add(painelBotoes)
 
         ' Função auxiliar para criar botões
-        Dim criarBotao = Function(texto As String, tecla As String, ativo As Boolean) As Button
+        Dim criarBotao = Function(texto As String, tecla As String, ativo As Boolean, acao As EventHandler) As Button
                              Dim btn As New Button() With {
-                             .Text = $"{texto} {tecla}",
-                             .Font = New Font("Segoe UI", 10, FontStyle.Bold),
-                             .Width = 230,
-                             .Height = 40,
-                             .Enabled = ativo,
-                             .BackColor = If(ativo, Color.LightSteelBlue, Color.Gainsboro),
-                             .FlatStyle = FlatStyle.Flat
-                         }
+        .Text = $"{texto} {tecla}",
+        .Font = New Font("Segoe UI", 10, FontStyle.Bold),
+        .Width = 230,
+        .Height = 40,
+        .Enabled = ativo,
+        .BackColor = If(ativo, Color.LightSteelBlue, Color.Gainsboro),
+        .FlatStyle = FlatStyle.Flat
+    }
                              btn.FlatAppearance.BorderSize = 0
+                             AddHandler btn.Click, acao
                              Return btn
                          End Function
 
         ' Adiciona os botões
-        painelBotoes.Controls.Add(criarBotao("Ocupar", "F1", True))
-        painelBotoes.Controls.Add(criarBotao("Fechar", "F2", True))
-        painelBotoes.Controls.Add(criarBotao("Consumos", "F3", True))
-        painelBotoes.Controls.Add(criarBotao("Recebimento", "F6", True))
-        painelBotoes.Controls.Add(criarBotao("Início Limpeza", "F4", True))
-        painelBotoes.Controls.Add(criarBotao("Chaves", "F5", True))
-        painelBotoes.Controls.Add(criarBotao("Manutenção", "F7", True))
+        painelBotoes.Controls.Add(criarBotao("Ocupar", "F1", True, AddressOf OcuparSuite))
+        painelBotoes.Controls.Add(criarBotao("Fechar", "F2", True, AddressOf OcuparSuite))
+        painelBotoes.Controls.Add(criarBotao("Consumos", "F3", True, AddressOf OcuparSuite))
+        painelBotoes.Controls.Add(criarBotao("Recebimento", "F6", True, AddressOf OcuparSuite))
+        painelBotoes.Controls.Add(criarBotao("Início Limpeza", "F4", True, AddressOf OcuparSuite))
+        painelBotoes.Controls.Add(criarBotao("Chaves", "F5", True, AddressOf OcuparSuite))
+        painelBotoes.Controls.Add(criarBotao("Manutenção", "F7", True, AddressOf OcuparSuite))
 
 
     End Sub
+
+    Private Sub OcuparSuite(sender As Object, e As EventArgs)
+        Dim myForm As New Ocupação With {.codigoAtual = _form.Tag}
+        FecharPainel()
+        myForm.ShowDialog()
+    End Sub
+
+    Private Sub FecharSuite(sender As Object, e As EventArgs)
+        ' Código para fechar a suíte
+    End Sub
+
+
     Private Sub CarregaSuiteGradeSimples()
         Try
 

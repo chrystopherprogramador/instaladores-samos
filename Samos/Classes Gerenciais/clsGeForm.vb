@@ -64,6 +64,7 @@
                                                 End If
                                                 If e.KeyCode = Keys.Enter Then
                                                     e.Handled = True
+                                                    e.SuppressKeyPress = True
                                                     SendKeys.Send("{TAB}")
                                                 End If
                                                 If e.Control AndAlso e.KeyCode = Keys.S Then

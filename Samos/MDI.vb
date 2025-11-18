@@ -199,28 +199,23 @@ Public Class MDI
     End Sub
 
     Private Sub InformaTarifaçãoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InformaTarifaçãoToolStripMenuItem.Click
-        Dim myForm As New InformaTarifacao
-        myForm.ShowDialog()
+        clsGeGeneral.OpenForm(Of InformaTarifacao)()
     End Sub
 
     Private Sub ÁreaDeServiçosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ÁreaDeServiçosToolStripMenuItem.Click
-        Dim myForm As New AreaSelecao
-        myForm.ShowDialog()
+        clsGeGeneral.OpenForm(Of AreaSelecao)()
     End Sub
 
     Private Sub TrocaDeUsuáriosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles TrocaDeUsuáriosToolStripMenuItem1.Click
-        Dim myForm As New Acesso
-        myForm.ShowDialog()
+        clsGeGeneral.OpenForm(Of Acesso)()
     End Sub
 
     Private Sub CategoriasDeMercadoriasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CategoriasDeMercadoriasToolStripMenuItem.Click
-        Dim myForm As New EspecieSelecao
-        myForm.ShowDialog()
+        clsGeGeneral.OpenForm(Of EspecieSelecao)()
     End Sub
 
     Private Sub ProdToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProdToolStripMenuItem.Click
-        Dim myForm As New ProdutosSelecao
-        myForm.ShowDialog()
+        clsGeGeneral.OpenForm(Of ProdutosSelecao)()
     End Sub
 
     Private Sub SairToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SairToolStripMenuItem.Click
@@ -236,16 +231,26 @@ Public Class MDI
     End Sub
 
     Private Sub UsuáriosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuáriosToolStripMenuItem.Click
-        Dim myForm As New UsuariosSelecao
-        myForm.ShowDialog()
+        clsGeGeneral.OpenForm(Of UsuariosSelecao)()
     End Sub
 
     Private Sub LicençaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LicençaToolStripMenuItem.Click
-        Dim myForm As New Licenca
-        myForm.ShowDialog()
+        clsGeGeneral.OpenForm(Of Licenca)()
     End Sub
 
-    Private Sub ToolTipCmdMenu_Click(sender As Object, e As EventArgs) Handles ToolTipCmdMenu.Click
+    Private Sub CategoriasDeSuítesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CategoriasDeSuítesToolStripMenuItem.Click
+        clsGeGeneral.OpenForm(Of SiglaSelecao)()
+    End Sub
 
+    Private Sub SuítesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SuítesToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub HistóricoDeMovtosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HistóricoDeMovtosToolStripMenuItem.Click
+        clsGeGeneral.OpenForm(Of HistMovtSelecao)()
+    End Sub
+
+    Private Sub OperadorasDeCartãoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OperadorasDeCartãoToolStripMenuItem.Click
+        clsGeGeneral.OpenForm(Of OperadorasSelecao)()
     End Sub
 End Class

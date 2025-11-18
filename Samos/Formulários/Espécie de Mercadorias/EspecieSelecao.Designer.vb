@@ -22,7 +22,6 @@ Partial Class EspecieSelecao
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnPesquisar = New System.Windows.Forms.Button()
         Me.txtBusca = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GridEspecie = New System.Windows.Forms.DataGridView()
@@ -32,15 +31,6 @@ Partial Class EspecieSelecao
         Me.btnNovo = New System.Windows.Forms.Button()
         CType(Me.GridEspecie, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'btnPesquisar
-        '
-        Me.btnPesquisar.Location = New System.Drawing.Point(373, 10)
-        Me.btnPesquisar.Name = "btnPesquisar"
-        Me.btnPesquisar.Size = New System.Drawing.Size(95, 35)
-        Me.btnPesquisar.TabIndex = 8
-        Me.btnPesquisar.Text = "Pesquisar"
-        Me.btnPesquisar.UseVisualStyleBackColor = True
         '
         'txtBusca
         '
@@ -107,7 +97,6 @@ Partial Class EspecieSelecao
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(514, 336)
-        Me.Controls.Add(Me.btnPesquisar)
         Me.Controls.Add(Me.txtBusca)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GridEspecie)
@@ -122,8 +111,6 @@ Partial Class EspecieSelecao
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents btnPesquisar As Button
     Friend WithEvents txtBusca As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents GridEspecie As DataGridView

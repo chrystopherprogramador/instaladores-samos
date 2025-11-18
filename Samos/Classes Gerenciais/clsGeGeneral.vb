@@ -1,5 +1,19 @@
 ﻿Public Class clsGeGeneral
 
+
+    Public Shared Sub OpenForm(Of T As {Form, New})()
+        Try
+            Using frm As New T()
+                frm.ShowDialog()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Erro ao abrir formulário: " & ex.Message,
+                            "Erro",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error)
+        End Try
+    End Sub
+
     Public Function ListarImpressorasInstaladas() As DataTable
         Dim dt As New DataTable()
         dt.Columns.Add("Nome", GetType(String))
