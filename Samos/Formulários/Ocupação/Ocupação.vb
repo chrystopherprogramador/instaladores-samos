@@ -82,6 +82,11 @@ Public Class Ocupação
         Else
             MsgBox("Nenhuma imagem foi selecionada.")
         End If
+
+
+
+
+
     End Sub
 
 End Class

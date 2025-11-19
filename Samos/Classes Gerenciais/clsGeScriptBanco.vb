@@ -298,7 +298,8 @@ Public Class clsGeScriptBanco
                 "ALTER TABLE movtosq MODIFY COLUMN saidahs TIME;",
                 "ALTER TABLE movtosq MODIFY COLUMN tempo TIME;",
                 "ALTER TABLE movtosq MODIFY COLUMN entrada DATE;",
-                "ALTER TABLE movtosq MODIFY COLUMN saida DATE;"
+                "ALTER TABLE movtosq MODIFY COLUMN saida DATE;",
+                "ALTER TABLE slditens2 MODIFY COLUMN mes DATE;"
             }
         End Get
     End Property

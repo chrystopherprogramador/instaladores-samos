@@ -113,4 +113,11 @@ Public Class OperadorasSelecao
             End If
         End If
     End Sub
+
+    Private Sub btnNovo_Click(sender As Object, e As EventArgs) Handles btnNovo.Click
+        Dim myForm As New Operadoras With {.CodigoAtual = 0}
+        If myForm.ShowDialog = DialogResult.OK Then
+            RefreshDados()
+        End If
+    End Sub
 End Class
