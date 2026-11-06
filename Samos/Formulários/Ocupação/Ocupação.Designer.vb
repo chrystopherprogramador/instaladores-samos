@@ -27,6 +27,8 @@ Partial Class Ocupação
         Me.Label1 = New System.Windows.Forms.Label()
         Me.disMovto = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.lblPlaca = New System.Windows.Forms.Label()
+        Me.txtPlaca = New System.Windows.Forms.TextBox()
         CType(Me.PtFotoPlaca, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -81,11 +83,34 @@ Partial Class Ocupação
         Me.Button1.Text = "Capturar OCR"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'lblPlaca
+        '
+        Me.lblPlaca.AutoSize = True
+        Me.lblPlaca.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPlaca.Location = New System.Drawing.Point(606, 305)
+        Me.lblPlaca.Name = "lblPlaca"
+        Me.lblPlaca.Size = New System.Drawing.Size(48, 19)
+        Me.lblPlaca.TabIndex = 21
+        Me.lblPlaca.Text = "Placa"
+        '
+        'txtPlaca
+        '
+        Me.txtPlaca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtPlaca.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPlaca.Location = New System.Drawing.Point(609, 327)
+        Me.txtPlaca.MaxLength = 8
+        Me.txtPlaca.Name = "txtPlaca"
+        Me.txtPlaca.Size = New System.Drawing.Size(179, 39)
+        Me.txtPlaca.TabIndex = 22
+        Me.txtPlaca.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'Ocupação
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.txtPlaca)
+        Me.Controls.Add(Me.lblPlaca)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.disMovto)
         Me.Controls.Add(Me.Label1)
@@ -104,4 +129,6 @@ Partial Class Ocupação
     Friend WithEvents Label1 As Label
     Friend WithEvents disMovto As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents lblPlaca As Label
+    Friend WithEvents txtPlaca As TextBox
 End Class

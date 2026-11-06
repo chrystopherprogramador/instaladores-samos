@@ -85,13 +85,48 @@ Public Class Carregando
 
             clsGeVariaveis.ConfMenu = ini.ReadValue("CONFIG", "MENU", 0)
 
+            'Verifica Usuário 999
 
-            ' Etapa 5: Finalização
-            carregaSistema.ReportProgress(100)
+            Using conn As New MySqlConnection(clsGeVariaveis._strPathBanco)
+                conn.Open()
+                Using cmd As New MySqlCommand("SELECT COUNT(*) as registros FROM usuarios WHERE codigo = 999", conn)
+
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+
+                        reader.Read()
+                        Dim X As Long = CLng(reader("registros"))
+
+                        reader.Close()
+                        If X = 0 Then
+
+                            Dim cmdIn As New MySqlCommand("INSERT INTO usuarios (codigo,nome,senha,nivel,Supervisor,inativo)
+                                                        VALUES (@codigo,@nome,@senha,@nivel,@supervisor,@inativo)", conn)
+
+                            With cmdIn.Parameters
+                                .AddWithValue("@codigo", 999)
+                                .AddWithValue("@nome", "Supervisor")
+                                .AddWithValue("@senha", clsGeGeneral.CripSenhaUsuario("1"))
+                                .AddWithValue("@nivel", 1)
+                                .AddWithValue("@supervisor", True)
+                                .AddWithValue("@inativo", False)
+                            End With
+
+                            cmdIn.ExecuteNonQuery()
+
+                        End If
+                    End Using
+
+                End Using
+            End Using
+
+                ' Etapa 5: Finalização
+                carregaSistema.ReportProgress(100)
             clsGeVariaveis._systemLoaded = True
 
         Catch ex As Exception
             e.Result = "Erro: " & ex.Message
+            MsgBox("Falha ao inicializar o sistema, por tanto ele será fechado!" & vbCrLf & "Erro apresentado:" &
+                   vbCrLf & ex.Message, vbCritical, "ERRO CRÍTICO!")
         End Try
     End Sub
     Private Function TestaConexao(connectionString As String) As Boolean

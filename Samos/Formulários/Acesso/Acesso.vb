@@ -23,9 +23,7 @@ Public Class Acesso
             }
             cmbNome.Items.Add(item)
         Next
-        If cmbNome.Items.Count > 0 Then
-            cmbNome.SelectedIndex = 0
-        End If
+        cmbNome.SelectedIndex = -1
     End Sub
 
     Private Sub Acesso_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing

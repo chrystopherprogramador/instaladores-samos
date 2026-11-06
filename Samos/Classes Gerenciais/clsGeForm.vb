@@ -1,4 +1,6 @@
-﻿Public Class clsGeForm
+﻿Imports Inviktus.Core
+
+Public Class clsGeForm
 
     Private _centraliza As Boolean = False
     Private _formulario As Form = Nothing
@@ -35,7 +37,7 @@
     Public Sub ConfiguraMe()
 
         Try
-
+            CfgForm.Configura(_formulario)
             _formulario.FormBorderStyle = FormBorderStyle.FixedSingle
             _formulario.MaximizeBox = _maximizado
             _formulario.MinimizeBox = _minimizado
@@ -178,6 +180,7 @@
                     btn.FlatStyle = FlatStyle.Flat
                     btn.Font = fontePadrao
                     btn.FlatAppearance.BorderSize = 0
+                    btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 120, 154)
                     'btn.Height = 35
                     'btn.Width = 120
                 End If

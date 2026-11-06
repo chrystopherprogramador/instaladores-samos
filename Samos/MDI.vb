@@ -47,11 +47,20 @@ Public Class MDI
         Dim config As New clsGeForm(Me, True, True, True)
         config.ConfiguraMe()
 
-        ToolTipCmdMenu.SelectedIndex = 0
+        ' Restaura a preferência de layout gravada (0 = Kanban, 1 = Padrão/Grade)
+        ToolTipCmdMenu.SelectedIndex = clsGeVariaveis.ConfMenu
 
+        ' Calcula o modo inicial a partir do índice do combo e carrega o mapa
+        Dim modoInicial As ModoLayoutSuite
+        Select Case ToolTipCmdMenu.SelectedIndex
+            Case 1
+                modoInicial = ModoLayoutSuite.GradeSimples
+            Case Else
+                modoInicial = ModoLayoutSuite.Kanban
+        End Select
 
         clsSuite = New clsGeCarregaSuite(pnSuite, Me)
-        clsSuite.CarregaSuite()
+        clsSuite.CarregaSuite(modoInicial)
 
         atualizaTimer.Interval = 3000
         atualizaTimer.Start()
@@ -114,11 +123,11 @@ Public Class MDI
                 If TypeOf ctrl Is Label AndAlso ctrl.Name.StartsWith("dis") Then
                     Dim status = ctrl.Name.Substring(3) ' Ex: "O", "D", etc.
 
-                    ' Aplica cor
+                    ' Aplica cor (só sobrescreve a cor do Designer se o banco trouxe cor válida)
                     If coresDict.ContainsKey(status) Then
                         Dim cor = coresDict(status)
-                        ctrl.BackColor = cor.Item1
-                        ctrl.ForeColor = cor.Item2
+                        If Not cor.Item1.IsEmpty Then ctrl.BackColor = cor.Item1
+                        If Not cor.Item2.IsEmpty Then ctrl.ForeColor = cor.Item2
                     End If
 
                     ' Aplica contador
@@ -243,7 +252,7 @@ Public Class MDI
     End Sub
 
     Private Sub SuítesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SuítesToolStripMenuItem.Click
-
+        clsGeGeneral.OpenForm(Of SuitesSelecao)()
     End Sub
 
     Private Sub HistóricoDeMovtosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HistóricoDeMovtosToolStripMenuItem.Click

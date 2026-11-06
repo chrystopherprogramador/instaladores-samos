@@ -351,6 +351,18 @@
     <Compile Include="Formulários\Siglas\SiglaSelecao.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formulários\Suites\Suites.Designer.vb">
+      <DependentUpon>Suites.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Suites\Suites.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\Suites\SuitesSelecao.Designer.vb">
+      <DependentUpon>SuitesSelecao.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Suites\SuitesSelecao.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formulários\Usuários\Usuario.Designer.vb">
       <DependentUpon>Usuario.vb</DependentUpon>
     </Compile>
@@ -370,6 +382,7 @@
       <DependentUpon>MDI.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\AlprOnnx.vb" />
     <Compile Include="Modulos\mdlInst.vb" />
     <Compile Include="Modulos\ModLicenca.vb" />
     <Compile Include="Modulos\OCRPlaca.vb" />
@@ -451,6 +464,12 @@
     <EmbeddedResource Include="Formulários\Siglas\SiglaSelecao.resx">
       <DependentUpon>SiglaSelecao.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Suites\Suites.resx">
+      <DependentUpon>Suites.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Suites\SuitesSelecao.resx">
+      <DependentUpon>SuitesSelecao.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Usuários\Usuario.resx">
       <DependentUpon>Usuario.vb</DependentUpon>
     </EmbeddedResource>
@@ -484,6 +503,17 @@
     <Content Include="License-LGPL.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="tessdata\eng.traineddata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="models\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>models\%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\logo_system.ico.bmp" />
   </ItemGroup>
   <ItemGroup>
@@ -507,7 +537,9 @@
   <ItemGroup>
     <None Include="Resources\sell_50dp_666666_FILL0_wght400_GRAD0_opsz48.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="models\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Tesseract.5.2.0\build\Tesseract.targets" Condition="Exists('..\packages\Tesseract.5.2.0\build\Tesseract.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

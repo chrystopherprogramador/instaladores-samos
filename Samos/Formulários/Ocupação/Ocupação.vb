@@ -71,22 +71,40 @@ Public Class Ocupação
         dialog.Filter = "Imagens (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png"
 
         If dialog.ShowDialog() = DialogResult.OK Then
-            Dim caminhoImagem As String = dialog.FileName
-            Dim placa = ProcessarImagem(caminhoImagem)
-
-            If placa <> "" Then
-                MsgBox("Placa detectada: " & placa)
-            Else
-                MsgBox("Falha ao detectar ou reconhecer a placa.")
-            End If
-        Else
-            MsgBox("Nenhuma imagem foi selecionada.")
+            ProcessarECarregarPlaca(dialog.FileName)
         End If
 
 
 
 
 
+    End Sub
+
+    ' Processa a imagem informada, preenche o campo de placa e dá feedback.
+    Private Sub ProcessarECarregarPlaca(caminhoImagem As String)
+        Dim cursorAnterior = Me.Cursor
+        Me.Cursor = Cursors.WaitCursor
+        Try
+            Try
+                PtFotoPlaca.Image = Image.FromFile(caminhoImagem)
+            Catch
+                ' Ignora se não conseguir exibir a prévia.
+            End Try
+
+            Dim placa = ProcessarImagem(caminhoImagem)
+
+            If placa <> "" Then
+                txtPlaca.Text = placa
+                txtPlaca.Focus()
+            Else
+                txtPlaca.Clear()
+                MsgBox("Não foi possível reconhecer a placa na imagem. Tente uma foto mais nítida e enquadrada.", vbExclamation, "OCR de Placa")
+            End If
+        Catch ex As Exception
+            MsgBox("Erro ao processar a imagem: " & ex.Message, vbCritical, "OCR de Placa")
+        Finally
+            Me.Cursor = cursorAnterior
+        End Try
     End Sub
 
 End Class
